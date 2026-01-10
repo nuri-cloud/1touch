@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+body {
+  font-family: "Mulish", sans-serif;
+}
+.container{
+  max-width: 1248px;
+  width: 100%;
+  margin: 0 auto;
+}
+.screen{
+  width: 1440px;
+  margin: auto;
+}
+:root {
+  --primary-blue: #3083FF;
+  --bg-main: #FFFFFF;
+  --bg-card: #FAFAFA;
+  --text-main: #ffffff;
+  --text-muted: #9EA3AC;
+  --transition: 0.3s ease;
+}
+
+body.dark-theme {
+  --bg-main: #121212;
+  --bg-card: #1E1E1E;
+  --text-main: #F8F9FA;
+  --text-muted: #7A7F85;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main) ;
+  transition: background-color var(--transition), color var(--transition);
+}
+body.dark-theme {
+  a, p, h1, h2, h3, h4, h5, li, span {
+    color: var(--text-main);
+  }
+  .header__nav{
+      background-color: #1b1b1b;
+  }
+  .theme-icon{
+     content: '';
+  inset: 0;
+  // background: rgba(0, 0, 0, 0.4); /* затемнение */
+        background-color: #222222;
+  }
+  .header__burger{
+    span{
+      background-color: #fff;
+    }
+  }
+  .lang-switch {
+    button{
+       background-color: #222222;
+      color: white;
+    }
+    a{
+      color: white;
+    }
+    ul{
+      background-color: #1b1b1b;
+      li{
+        color: white;
+       }
+    }
+  }
+  .banner__title--indent{
+    background: linear-gradient(
+  to right, 
+  rgb(240, 240, 240) 0%,    // Начало: темный
+  rgb(243, 243, 243) 50%,   // Держим темный до 40%
+  rgba(0, 70, 210, 1) 90%, // Плавный переход через полупрозрачный
+  rgba(0, 70, 210, 1) 100%   // Конец: синий
+);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+  }
+  .banner__title--indent1{
+    background: linear-gradient(
+  to right, 
+  rgb(240, 240, 240) 0%,    // Начало: темный
+  rgb(243, 243, 243) 50%,   // Держим темный до 40%
+  rgba(0, 70, 210, 1) 90%, // Плавный переход через полупрозрачный
+  rgba(0, 70, 210, 1) 100%   // Конец: синий
+);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+  }
+  .benefit-card{
+    background-color: #1b1b1b;
+  }
+  .how-it-works{
+    background-color: transparent;
+  }
+  .step-card{
+      background-color: #1b1b1b;
+    }
+    .step-card__info{
+    background-color: #272525;
+  }
+  .reason-card{
+    background-color: #1b1b1b;
+  }
+  .tariffCard{
+    background-color: #1b1b1b;
+    .price{
+      &__amount {
+         font-size: 42px;
+         font-weight: 700;
+         color: white;
+       }
+ 
+       &__currency {
+         font-size: 20px;
+         font-weight: 600;
+         color: white;
+       }
+ 
+       &__period {
+         font-size: 16px;
+          color: white;
+       }
+    }
+    .features{
+        li{
+          color: white;
+        }
+    }
+  }
+  .footer__phone-main{
+   h1, h2, h3, h4, h5, ul, li,span{
+      color: white;
+    }
+    
+  }
+  .contact-item__text{
+    a, p{
+      color: white;
+    }
+  }
+}

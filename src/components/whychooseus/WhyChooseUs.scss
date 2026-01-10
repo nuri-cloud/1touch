@@ -1,0 +1,378 @@
+// Variables
+$primary-blue: #3083FF;
+$text-dark: #191919;
+$text-gray: #575D67;
+$bg-light: #F8F9FA;
+$white: #fff;
+$number-bg: rgba(48, 131, 255, 0.1);
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes numberFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+}
+
+.why-choose-us {
+  margin-top: 100px;  
+  animation: fadeInUp 0.8s ease-out;
+  @media (max-width:1240px) {
+    margin-top: 70px;  
+}
+  @media (max-width:1024px) {
+    margin-top: 30px;  
+}
+  @media (max-width:768px) {
+    margin-top: 0px;  
+}
+  &__container {
+    margin: 0 auto;
+  }
+  
+  &__title {
+    padding-bottom: 50px;
+color: $text-dark;
+font-weight: 500;
+font-size: 50px;
+line-height: 55px;
+@media (max-width:768px) {
+   padding-bottom: 0px;
+}
+  }
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.reason-description{
+    margin-top: 20px;
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    justify-content: space-between;
+}
+.reason-card {
+    padding-top: 20px;
+  background: #FAFAFA;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: scaleIn 0.6s ease-out backwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba($primary-blue, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .reason-card__number {
+      animation: numberFloat 2s ease-in-out infinite;
+      color: $primary-blue;
+    }
+  }
+
+  &__number {
+    font-size: 300px;
+    font-weight: 400;
+    color: rgba($primary-blue, 0.15);
+    line-height: 1;
+    // margin-bottom: 20px;
+    font-family: "Syne", sans-serif;    
+    position: relative;
+    display: inline-block;
+    transition: all 0.4s ease;
+    user-select: none;
+  }
+
+  &__title {
+    padding-left: 35px;
+    max-width: 331px;
+    font-size: 24px;
+    font-weight: 600;
+    color: $text-dark;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__description {
+    margin-right: 20px !important;
+    font-size: 15px;
+    color: $text-gray;
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  &__description1 {
+    margin-left: 35px !important;
+    font-size: 15 px;
+    color: $text-gray;
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .why-choose-us {
+    padding: 0px 0px;
+
+    &__title {
+      font-size: 36px;
+      margin-bottom: 45px;
+    }
+  }
+
+  .reasons-grid {
+    gap: 25px;
+  }
+
+  .reason-card {
+      padding-top: 20px;
+    border-radius: 26px;
+
+    &__number {
+      font-size: 100px;
+      margin-bottom: 18px;
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    &__description {
+      font-size: 14px;
+    }
+    &__description1 {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .why-choose-us {
+    padding: 0px 20px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .reasons-grid {
+    gap: 20px;
+  }
+  .reason-description{
+    img{
+      width: 40%;
+      height: 12vh;
+    }
+  }
+  .reason-card {
+    border-radius: 24px;
+
+    &__number {
+      font-size: 90px;
+      margin-bottom: 16px;
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    &__description {
+      font-size: 12px;
+    }
+
+    &__description1 {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 0px 20px;
+
+    &__title {
+      font-size: 28px;
+      margin-bottom: 35px;
+    }
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .reason-description{
+    flex-direction: column-reverse; 
+  }
+  .reason-card {    
+    padding-left: 30px;
+    border-radius: 22px;
+
+    &__number {
+      font-size: 80px;
+      margin-bottom: 15px;
+    }
+
+    &__title {
+       padding-left: 0px;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    &__description {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    &__description1 {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .why-choose-us {
+    padding: 45px 15px;
+
+    &__title {
+      font-size: 26px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .reason-card {
+    border-radius: 20px;
+
+    &__number {
+      font-size: 70px;
+    }
+
+    &__title {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .why-choose-us {
+    padding: 40px 10px;
+
+    &__title {
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+  }
+
+  .reasons-grid {
+    gap: 15px;
+  }
+.reason-description{
+    img{
+      width: 43%;
+      height: 10vh;
+    }
+  }
+  // .reason-card {
+  //   border-radius: 18px;
+
+  //   &__number {
+  //     font-size: 60px;
+  //     margin-bottom: 12px;
+  //   }
+
+  //   &__title {
+  //     font-size: 15px;
+  //     margin-bottom: 10px;
+  //   }
+
+  //   &__description {
+  //     font-size: 12px;
+  //     line-height: 1.5;
+  //   }
+  // }
+}
+
+@media (max-width: 375px) {
+  .why-choose-us {
+    padding: 35px 10px;
+
+    &__title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      line-height: 28px;
+    }
+  }
+
+  .reason-card {
+
+    &__number {
+      font-size: 55px;
+    }
+
+    &__title {
+      font-size: 14px;
+    }
+
+    &__description {
+      font-size: 11px;
+    }
+  }
+}

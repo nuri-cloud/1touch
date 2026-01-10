@@ -1,0 +1,498 @@
+// Variables
+$primary-blue: #3083FF;
+$bg-card: #FAFAFA;
+$text-dark: #1a1a1a;
+$text-gray: #575D67;
+$white: #fff;
+$black: #222222;
+
+// Badge colors
+$badge-blue: #3083FF;
+$badge-green: #1FAA23;
+$badge-orange: #FF871F;
+$badge-perple: #B26FFF;
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ourtariffs {
+  margin-top: 40px;
+  padding: 0 20px;
+  animation: fadeInUp 0.8s ease-out;
+  max-width: 1365px;
+  margin-left: auto;
+  // margin-right: auto;
+
+  h1 {
+    font-weight: 500;
+    font-size: 50px;
+    color: $text-dark;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+
+  .tariffs-carousel {
+    position: relative;
+    padding: 0px 0 0px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .tariffsSwiper {
+    padding: 10px 5px;
+    cursor: grab;
+    width: 100%;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    // Swiper Pagination
+    .swiper-pagination {
+      bottom: 10px;
+
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        opacity: 1;
+        transition: all 0.3s ease;
+
+        &.swiper-pagination-bullet-active {
+          background: $primary-blue;
+          width: 30px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .tariffCard {
+    height: 100%;
+    padding: 30px;
+    border-radius: 50px;
+    background: $bg-card;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    animation: scaleIn 0.5s ease-out;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .badge {
+      font-weight: 500;
+      font-size: 14px;
+      color: $white;
+      margin-bottom: 20px;
+      border-radius: 100px;
+      padding: 8px 16px;
+      display: inline-block;
+      width: fit-content;
+      transition: all 0.3s ease;
+
+      &--blue {
+        background: $badge-blue;
+        
+        &:hover {
+          background: darken($badge-blue, 10%);
+        }
+      }
+
+      &--green {
+        background: $badge-green;
+        
+        &:hover {
+          background: darken($badge-green, 10%);
+        }
+      }
+
+      &--orange {
+        background: $badge-orange;
+        
+        &:hover {
+          background: darken($badge-orange, 10%);
+        }
+      }
+      &--perple {
+        background: $badge-perple;
+        
+        &:hover {
+          background: darken($badge-perple, 10%);
+        }
+      }
+    }
+
+    .price {
+      margin: 20px 0 30px;
+      
+      &__amount {
+        font-size: 42px;
+        font-weight: 700;
+        color: $text-dark;
+      }
+
+      &__currency {
+        font-size: 20px;
+        font-weight: 600;
+        color: $text-gray;
+      }
+
+      &__period {
+        font-size: 16px;
+        color: $text-gray;
+        font-weight: 400;
+      }
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+      flex-grow: 1;
+      background-color: transparent;
+
+      li {
+        padding: 12px 0;
+        font-size: 16px;
+        color: $text-dark;
+        position: relative;
+        padding-left: 30px;
+        line-height: 1.5;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: translateX(5px);
+        }
+
+        &::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: $badge-blue;
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+
+    &__button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 100px;
+      background: $primary-blue;
+      color: $white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: auto;
+
+      &:hover {
+        background: darken($primary-blue, 10%);
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba($primary-blue, 0.3);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1400px) {
+  .ourtariffs {
+    max-width: 1270px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ourtariffs {
+    
+    h1 {
+      font-size: 42px;
+      margin-bottom: 35px;
+    }
+
+    .tariffCard {
+      .price {
+        &__amount {
+          font-size: 38px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .ourtariffs {
+    margin-top: 30px;
+    padding: 0 15px;
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 30px;
+    }
+
+    .tariffs-carousel {
+      padding: 15px 0 55px;
+    }
+
+    .tariffCard {
+      padding: 25px;
+      border-radius: 40px;
+
+      .badge {
+        font-size: 13px;
+        padding: 7px 14px;
+      }
+
+      .price {
+        margin: 18px 0 25px;
+
+        &__amount {
+          font-size: 34px;
+        }
+
+        &__currency {
+          font-size: 18px;
+        }
+
+        &__period {
+          font-size: 15px;
+        }
+      }
+
+      .features li {
+        font-size: 15px;
+        padding: 10px 0;
+        padding-left: 28px;
+      }
+
+      &__button {
+        padding: 14px;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ourtariffs {
+    margin-top: 25px;
+    max-width: 100%;
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .tariffs-carousel {
+      padding: 10px 0 50px;
+    }
+
+    .tariffCard {
+      padding: 20px;
+      border-radius: 35px;
+
+      .badge {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-bottom: 15px;
+      }
+
+      .price {
+        margin: 15px 0 20px;
+
+        &__amount {
+          font-size: 30px;
+        }
+
+        &__currency {
+          font-size: 16px;
+        }
+
+        &__period {
+          font-size: 14px;
+        }
+      }
+
+      .features {
+        margin-bottom: 25px;
+
+        li {
+          font-size: 14px;
+          padding: 9px 0;
+          padding-left: 26px;
+
+          &::before {
+            font-size: 16px;
+          }
+        }
+      }
+
+      &__button {
+        padding: 13px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .ourtariffs {
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .tariffCard {
+      .price {
+        &__amount {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .ourtariffs {
+    margin-top: 20px;
+    padding: 0 10px;
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .tariffs-carousel {
+      padding: 10px 0 20px;
+    }
+
+    .tariffsSwiper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+
+      .swiper-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        transform: none !important;
+      }
+
+      .swiper-slide {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .swiper-pagination {
+        display: none; // Скрываем пагинацию
+      }
+    }
+
+    .tariffCard {
+      padding: 18px;
+      border-radius: 30px;
+
+      .badge {
+        font-size: 11px;
+        padding: 5px 10px;
+        margin-bottom: 12px;
+      }
+
+      .price {
+        margin: 12px 0 18px;
+
+        &__amount {
+          font-size: 26px;
+        }
+
+        &__currency {
+          font-size: 15px;
+        }
+
+        &__period {
+          font-size: 13px;
+        }
+      }
+
+      .features {
+        margin-bottom: 20px;
+
+        li {
+          font-size: 13px;
+          padding: 8px 0;
+          padding-left: 24px;
+
+          &::before {
+            font-size: 15px;
+          }
+        }
+      }
+
+      &__button {
+        padding: 12px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .ourtariffs {
+    h1 {
+      font-size: 22px;
+    }
+
+    .tariffCard {
+      padding: 16px;
+
+      .price {
+        &__amount {
+          font-size: 24px;
+        }
+
+        &__currency {
+          font-size: 14px;
+        }
+      }
+
+      .features li {
+        font-size: 12px;
+      }
+
+      &__button {
+        padding: 11px;
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,200 @@
+// Переменные
+$blue: #3083FF;
+$text-dark: #000000;
+$text-light: #9EA3AC;
+$bg-social: #F0F5FF;
+
+.footer {
+  padding: 60px 0px 30px;
+//   background-color: #fff;
+  border-top: 1px solid #eee;
+  @media(max-width:1024px){
+     padding: 60px 20px 30px;
+  }
+  @media(max-width:1024px){
+     padding: 60px 15px 30px;
+  }
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  &__col {
+    &--brand {
+      flex: 1.2;
+      min-width: 300px;
+    }
+    &--contacts, &--address {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+
+  // Секция 9999
+  &__phone-main {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+
+    .footer__number {
+      font-size: 72px; // Как на фото
+      font-weight: 500;
+      color: $text-dark;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .footer__phone-info {
+      h3 {
+        font-size: 22px;
+        margin: 0;
+        font-weight: 500;
+        color: $text-dark;
+      }
+      p {
+        font-size: 14px;
+        color: $text-light;
+        margin: 4px 0 0;
+      }
+    }
+  }
+
+  // Соцсети
+  &__socials {
+    display: flex;
+    gap: 15px;
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      background: $bg-social;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+
+      img {
+        width: 20px; // Размер иконок внутри круга
+        height: auto;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  // Элементы контактов (Телефон, Почта, Офис)
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+      background: $blue;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      img {
+        width: 20px;
+        height: auto;
+      }
+    }
+
+    &__text {
+      label {
+        display: block;
+        font-size: 14px;
+        color: $text-light;
+        margin-bottom: 4px;
+      }
+      a, p {
+        font-size: 18px;
+        font-weight: 500;
+        color: $text-dark;
+        text-decoration: none;
+        margin: 0;
+      }
+    }
+  }
+
+  // Нижняя часть (Кнопки приложений и копирайт)
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__apps {
+    display: flex;
+    gap: 15px;
+    .app-link {
+      &:hover {
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: 14px;
+    color: $text-light;
+    margin: 0;
+  }
+}
+
+// Адаптивность
+@media (max-width: 1024px) {
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer__phone-main .footer__number {
+    font-size: 56px;
+  }
+
+  .footer__apps {
+    flex-direction: column;
+    .app-link {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+}
+@media (max-width: 768px) {
+    .contact-item{
+          &__icon {
+      width: 30px;
+      height: 30px;
+          }
+    }
+    .footer__bottom{
+    .footer__apps{
+        display: none;
+    }
+    }
+}
