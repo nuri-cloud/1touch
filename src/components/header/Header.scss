@@ -4,7 +4,7 @@ $bg-light: #f1f3f7;
 $text-dark: #333;
 $white: #fff;
 
-.header.container {
+.header {
   width: 100%;
   padding-top: 30px;
 }
@@ -28,10 +28,15 @@ font-style: Bold;
 font-size: 24px;
 color:rgba(35, 38, 43, 1);
   }
+  @media (max-width: 480px) {
+    img{
+      width: 40px;
+    }
+    h2{
+      font-size: 18px;
+    }
+  }
 }
-.header__logo img {
-}
-
 .header__nav {
   display: flex;
   gap: 40px;

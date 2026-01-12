@@ -30,7 +30,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="benefits">
+    <section className="benefits" id='Vygoda'>
       <div className="benefits__container container">
         <div className="benefits__header">
           <h2 className="benefits__title">С 1TOUCH таких проблем не будет</h2>

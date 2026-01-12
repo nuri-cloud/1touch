@@ -216,14 +216,13 @@ $mobile: 480px;
 
             }
             .othercard2{
-                position: relative;
-                height: 266px !important;
+                height:310px;
                 border-radius: 50px;
                 background-color: #FAFAFA;
                 padding: 0px;
 
                 @media (max-width: $laptop) {
-                    height: 243px;
+                    height: 263px;
                     border-radius: 40px;
                 }
 
@@ -239,11 +238,8 @@ $mobile: 480px;
                 }
 
                 img {
-                    position: absolute;
-                    top: 0px;
-                    right: 0px;
                     width: 100%;
-                    height: 125%;
+                    height: 99%;
                     border-radius: 50px;
                     object-fit: cover;
                       @media (max-width: $mobile) {

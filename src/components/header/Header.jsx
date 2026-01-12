@@ -37,10 +37,10 @@ const [isDark, setIsDark] = useState(false);
         </div>
 
         <nav className={`header__nav ${openMenu ? 'header__nav--open' : ''}`}>
-          <a href="#" onClick={closeMenu}>О приложении</a>
-          <a href="#" onClick={closeMenu}>Тарифы</a>
-          <a href="#" onClick={closeMenu}>Выгода</a>
-          <a href="#" onClick={closeMenu}>Проблема</a>
+          <a href="#AboutUs" onClick={closeMenu}>О приложении</a>
+          <a href="#tariffs" onClick={closeMenu}>Тарифы</a>
+          <a href="#Vygoda" onClick={closeMenu}>Выгода</a>
+          <a href="#problem" onClick={closeMenu}>Проблема</a>
           
           <div className="header__nav-mobile">
             <div className="lang-switch">

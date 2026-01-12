@@ -1,11 +1,11 @@
 import React from 'react'
 import img1 from '../../assets/svg/Frame 2147225256.svg'
-import img2 from '../../assets/image/Frame 2147225290.png'
+import img2 from '../../assets/image/B1.png'
 import img3 from '../../assets/image/Mark.png'
 import './Problems.scss'
 function Problem() {
   return (
-    <div className='problem container'>
+    <div className='problem container' id='problem'>
    <h1 className='problem__title'>Проблемы водителей</h1>
     <div className='problems'>
       <div className='problems__card'>

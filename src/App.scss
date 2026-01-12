@@ -141,4 +141,24 @@ background-clip: text;
       color: white;
     }
   }
+  .problems__card{
+     background-color: #1b1b1b;
+      h1{
+      color: white;
+    }
+    }
+    .problems__othercard{
+      .othercard1{
+        background-color: #1b1b1b;
+         h1{
+      color: white;
+    }
+      }
+      .othercard2{
+        background-color: #1b1b1b !important;
+      }
+  }
+}
+html {
+  scroll-behavior: smooth;
 }

@@ -67,7 +67,7 @@ function Ourtariffs() {
   };
 
   return (
-    <div className='ourtariffs'>
+    <div className='ourtariffs' id='tariffs'>
       <h1>Наши тарифы</h1>
       
       <div className="tariffs-carousel">

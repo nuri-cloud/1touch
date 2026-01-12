@@ -34,7 +34,7 @@ function HowItWorks() {
   ];
 
   return (
-    <div className="how-it-works">
+    <div className="how-it-works" id='AboutUs'>
       <div className="how-it-works__container container">
         <h2 className="how-it-works__title">Как работает наше приложение?</h2>
         
