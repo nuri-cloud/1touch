@@ -1,6 +1,6 @@
 import React from 'react';
 import './Styles.scss';
-import phoneImg from '../../assets/image/Group 36689 (1).png'
+import phoneImg from '../../assets/svg/Group 36689.svg'
 import icon1 from '../../assets/svg/Frame (35).svg'
 import icon2 from '../../assets/svg/Frame (36).svg'
 import icon3 from '../../assets/svg/Frame (37).svg'
@@ -33,7 +33,7 @@ const Benefits = () => {
     <section className="benefits" id='Vygoda'>
       <div className="benefits__container container">
         <div className="benefits__header">
-          <h2 className="benefits__title">С 1TOUCH таких проблем не будет</h2>
+          <h2 className="benefits__title">С ONETOUCH таких проблем не будет</h2>
           <p className="benefits__subtitle">
             Всё быстро и удобно: записывайтесь, выбирайте услуги и оплачивайте онлайн в приложении — без очередей.
           </p>

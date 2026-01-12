@@ -7,18 +7,18 @@ $text-gray: #9EA3AC;
   padding: 100px 0;
   overflow: hidden;
 @media (max-width: 1024px) {
-     padding: 100px 20px;
+     padding: 80px 20px;
 }
 @media (max-width: 480px) {
-     padding: 100px 15px;
+     padding: 0px 15px;
 }
   &__header {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   &__title {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 50px;
+    font-weight: 500;
     color: $text-dark;
     line-height: 1.2;
     margin-bottom: 20px;
@@ -53,8 +53,8 @@ $text-gray: #9EA3AC;
     
     img {
       position: absolute;
-      top: -400px;
-      right: -20px;
+      top: -250px;
+      right: 0px;
       max-width: 100%;
       
       height: auto;
@@ -65,10 +65,10 @@ $text-gray: #9EA3AC;
 .benefit-card {
   background-color: $bg-light;
   border-radius: 40px;
-  padding: 45px 35px;      /* Внутренние отступы */
+  padding: 45px 35px;
   display: flex;
   flex-direction: column;
-  min-height: 250px;       /* Минимальная высота для выравнивания */
+  min-height: 250px;       
   box-sizing: border-box;
   transition: transform 0.3s ease;
 
@@ -122,7 +122,7 @@ $text-gray: #9EA3AC;
 
 @media (max-width: 768px) {
   .benefits__title {
-    font-size: 32px;
+    font-size: 28px;
   }
   .benefits__grid {
     grid-template-columns: 1fr; 
@@ -131,5 +131,8 @@ $text-gray: #9EA3AC;
     padding: 30px;
     min-width: 100%;
     min-height: auto;
+     &:hover {
+    transform: translateY(0px);
+  }
   }
 }

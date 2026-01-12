@@ -2,7 +2,7 @@ import React from 'react';
 import './AppDownload.scss';
 import appleLogo from '../../assets/svg/button (2).svg';
 import googlePlayLogo from '../../assets/svg/button (3).svg';
-import qrCodeImage from '../../assets/image/Снимок экрана 2026-01-06 180526.png';
+import qrCodeImage from '../../assets/svg/download-qr-code 1.svg';
 
 const AppDownload = () => {
   return (

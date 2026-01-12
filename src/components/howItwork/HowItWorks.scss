@@ -100,6 +100,7 @@ $textgray: #848484;
   }
 
   &__info {
+    height: 100%;
     text-align: start;
     padding: 35px;
     padding-top: 30px;
@@ -116,7 +117,7 @@ $textgray: #848484;
   }
 
   &__title {
-    font-size: 17px;
+    font-size: 28px;
     font-weight: 400;
     color: $text-gray;
     line-height: 1.4;
@@ -185,10 +186,10 @@ $textgray: #848484;
 // Responsive Design
 @media (max-width: 1200px) {
   .how-it-works {
-    padding: 70px 0px;
+    padding: 0px 0px;
 
     &__title {
-      font-size: 36px;
+      font-size: 50px;
       margin-bottom: 45px;
     }
   }
@@ -199,7 +200,7 @@ $textgray: #848484;
 
   .step-card {
     &__image {
-      max-width: 180px;
+      max-width: 70%;
     }
 
     &__title {
@@ -216,10 +217,10 @@ $textgray: #848484;
 
 @media (max-width: 1024px) {
   .how-it-works {
-    padding: 60px 20px;
+    padding: 0px 20px;
 
     &__title {
-      font-size: 32px;
+      font-size: 44px;
       margin-bottom: 40px;
     }
   }
@@ -231,7 +232,7 @@ $textgray: #848484;
 
   .step-card {
     &__image {
-      max-width: 200px;
+      max-width: 60%;
     }
   }
 
@@ -243,10 +244,11 @@ $textgray: #848484;
 
 @media (max-width: 768px) {
   .how-it-works {
-    padding: 50px 15px;
+    padding: 0px 15px;
+    padding-bottom: 40px;
 
     &__title {
-      font-size: 28px;
+      font-size: 36px;
       margin-bottom: 35px;
     }
   }
@@ -256,12 +258,15 @@ $textgray: #848484;
   }
 
   .step-card {
+    &__info{
+      height: 100%;
+    }
     &__image {
-      max-width: 180px;
+      max-width: 220px;
     }
 
     &__number {
-      font-size: 18px;
+      font-size: 24px;
       margin-bottom: 6px;
     }
 
@@ -306,7 +311,7 @@ $textgray: #848484;
 @media (max-width: 640px) {
   .how-it-works {
     &__title {
-      font-size: 26px;
+      font-size: 32px;
       margin-bottom: 30px;
     }
   }
@@ -317,7 +322,7 @@ $textgray: #848484;
 
   .step-card {
     &__image {
-      max-width: 160px;
+      max-width: 210px;
     }
   }
 
@@ -332,7 +337,7 @@ $textgray: #848484;
     padding: 40px 10px;
 
     &__title {
-      font-size: 22px;
+      font-size: 28px;
       margin-bottom: 25px;
     }
   }
@@ -347,15 +352,14 @@ $textgray: #848484;
   .step-card {
     border-radius: 30px;
     &__image {
-      max-width: 200px;
+     max-width: 80%;
     }
 
     &__number {
-      font-size: 12px;
+      font-size: 24px;
     }
-
     &__title {
-      font-size: 13px;
+      font-size: 22px;
     }
   }
 
@@ -369,7 +373,7 @@ $textgray: #848484;
 @media (max-width: 375px) {
   .how-it-works {
     &__title {
-      font-size: 20px;
+      font-size: 28px;
       margin-bottom: 20px;
     }
   }
@@ -380,11 +384,14 @@ $textgray: #848484;
 
   .step-card {
     &__image {
-      max-width: 180px;
+      max-width: 90%;
     }
 
+    &__number {
+      font-size: 18px;
+    }
     &__title {
-      font-size: 12px;
+      font-size: 15px;
     }
   }
 

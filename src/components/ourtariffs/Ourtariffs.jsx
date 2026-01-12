@@ -5,6 +5,7 @@ import 'swiper/css';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 import './ourtariffs.scss';
+import img from '../../assets/svg/Danger Circle.svg'
 
 function Ourtariffs() {
   const data = [

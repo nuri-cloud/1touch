@@ -1,8 +1,8 @@
 import React from 'react';
 import './Banner.scss';
-import appStore from '../../assets/svg/button.svg';
-import googlePlay from '../../assets/svg/button (1).svg';
-import phone from '../../assets/image/экран 1.png';
+// import appStore from '../../assets/svg/button.svg';
+// import googlePlay from '../../assets/svg/button (1).svg';
+import phone from '../../assets/image/экран 1 (1).png';
 import phone1 from '../../assets/image/экран 2.png';
 import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1.png';
 

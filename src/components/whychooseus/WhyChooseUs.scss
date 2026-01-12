@@ -77,6 +77,15 @@ line-height: 55px;
     align-items: start;
     gap: 15px;
     justify-content: space-between;
+    // .whychoseusImg{
+    //   position: relative;
+    //   height: 100px;
+    //   img{
+    //     position: absolute;
+    //     bottom: -15px;
+    //     left: 10px;
+    //   }
+    // }
 }
 .reason-card {
     padding-top: 20px;
@@ -86,7 +95,6 @@ line-height: 55px;
   overflow: hidden;
   transition: all 0.4s ease;
   animation: scaleIn 0.6s ease-out backwards;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 
   @for $i from 1 through 4 {
     &:nth-child(#{$i}) {
@@ -147,7 +155,7 @@ line-height: 55px;
 
   &__description {
     margin-right: 20px !important;
-    font-size: 15px;
+    font-size: 17px;
     color: $text-gray;
     line-height: 1.7;
     margin: 0;
@@ -156,7 +164,7 @@ line-height: 55px;
   }
   &__description1 {
     margin-left: 35px !important;
-    font-size: 15 px;
+    font-size: 17px;
     color: $text-gray;
     line-height: 1.7;
     margin: 0;
@@ -171,8 +179,8 @@ line-height: 55px;
     padding: 0px 0px;
 
     &__title {
-      font-size: 36px;
-      margin-bottom: 45px;
+      font-size: 44px;
+      margin-bottom: 0px;
     }
   }
 
@@ -195,10 +203,10 @@ line-height: 55px;
     }
 
     &__description {
-      font-size: 14px;
+      font-size: 18px;
     }
     &__description1 {
-      font-size: 14px;
+      font-size: 18px;
     }
   }
 }
@@ -208,8 +216,8 @@ line-height: 55px;
     padding: 0px 20px;
 
     &__title {
-      font-size: 32px;
-      margin-bottom: 40px;
+      font-size: 38px;
+      margin-bottom: 0px;
     }
   }
 
@@ -219,7 +227,14 @@ line-height: 55px;
   .reason-description{
     img{
       width: 40%;
-      height: 12vh;
+      height: 16vh;
+    }
+  }
+   .reason-description{
+    img{
+      width: 40%;
+      height: 7vh;
+      margin-bottom: -20px;
     }
   }
   .reason-card {
@@ -230,17 +245,18 @@ line-height: 55px;
       margin-bottom: 16px;
     }
 
-    &__title {
-      font-size: 24px;
-      margin-bottom: 12px;
+     &__title {
+      font-size: 22px;
+      margin-bottom: 14px;
     }
 
     &__description {
-      font-size: 12px;
+      line-height: 20px;
+      font-size: 16px;
     }
-
     &__description1 {
-      font-size: 12px;
+      line-height: 20px;
+      font-size: 16px;
     }
   }
 }
@@ -250,7 +266,7 @@ line-height: 55px;
     padding: 0px 20px;
 
     &__title {
-      font-size: 28px;
+      font-size: 32px;
       margin-bottom: 35px;
     }
   }
@@ -261,6 +277,13 @@ line-height: 55px;
   }
   .reason-description{
     flex-direction: column-reverse; 
+  }
+  .reason-description{
+    img{
+      width: 120px;
+      height: 6vh;
+       margin-bottom: -10px;
+    }
   }
   .reason-card {    
     padding-left: 30px;
@@ -273,16 +296,16 @@ line-height: 55px;
 
     &__title {
        padding-left: 0px;
-      font-size: 17px;
+      font-size: 22px;
       margin-bottom: 12px;
     }
 
     &__description {
-      font-size: 13px;
+      font-size: 18px;
       line-height: 1.6;
     }
     &__description1 {
-      font-size: 13px;
+      font-size: 18px;
       line-height: 1.6;
     }
   }
@@ -293,20 +316,22 @@ line-height: 55px;
     padding: 45px 15px;
 
     &__title {
-      font-size: 26px;
+      font-size: 30px;
       margin-bottom: 30px;
+      line-height: 40px;
     }
   }
-
+.reason-description{
+    img{
+      width: 120px;
+      height: 6vh;
+    }
+  }
   .reason-card {
     border-radius: 20px;
 
     &__number {
       font-size: 70px;
-    }
-
-    &__title {
-      font-size: 16px;
     }
   }
 }
@@ -316,8 +341,8 @@ line-height: 55px;
     padding: 40px 10px;
 
     &__title {
-      font-size: 22px;
-         line-height: 28px;
+      font-size: 28px;
+         line-height: 32px;
       margin-bottom: 25px;
     }
   }
@@ -327,28 +352,34 @@ line-height: 55px;
   }
 .reason-description{
     img{
-      width: 38%;
-      height: 7vh;
+      width: 90px;
     }
   }
-  // .reason-card {
-  //   border-radius: 18px;
+  .reason-card {
+    border-radius: 18px;
+   &:hover {
+    transform: translateY(0px);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
 
-  //   &__number {
-  //     font-size: 60px;
-  //     margin-bottom: 12px;
-  //   }
+    &::before {
+      opacity: 1;
+    }
+  }
+    &__number {
+      font-size: 60px;
+      margin-bottom: 12px;
+    }
 
-  //   &__title {
-  //     font-size: 15px;
-  //     margin-bottom: 10px;
-  //   }
+    &__title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
 
-  //   &__description {
-  //     font-size: 12px;
-  //     line-height: 1.5;
-  //   }
-  // }
+    &__description {
+      font-size: 15px;
+       margin-top: -20px;
+    }
+  }
 }
 
 @media (max-width: 375px) {
@@ -356,9 +387,9 @@ line-height: 55px;
     padding: 35px 10px;
 
     &__title {
-      font-size: 20px;
+      font-size: 28px;
       margin-bottom: 20px;
-      line-height: 24px;
+      line-height: 32px;
       
     }
   }
@@ -366,15 +397,17 @@ line-height: 55px;
   .reason-card {
 
     &__number {
+      margin-bottom: 200px;
       font-size: 55px;
     }
 
     &__title {
-      font-size: 14px;
+      font-size: 22px;
     }
 
     &__description {
-      font-size: 11px;
+      margin-top: -20px;
+      font-size: 13px;
     }
   }
 }

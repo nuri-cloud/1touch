@@ -1,5 +1,7 @@
 import React from 'react'
-import img1 from '../../assets/svg/Frame 2147225256.svg'
+import problem1 from '../../assets/svg/Frame 2147225256.svg'
+import problem2 from '../../assets/svg/Frame 2147225256 (1).svg'
+import problem3 from '../../assets/svg/Frame 2147225256 (2).svg'
 import img2 from '../../assets/image/B1.png'
 import img3 from '../../assets/image/Mark.png'
 import './Problems.scss'
@@ -9,14 +11,14 @@ function Problem() {
    <h1 className='problem__title'>Проблемы водителей</h1>
     <div className='problems'>
       <div className='problems__card'>
-        <img src={img1} alt="" />
+        <img src={problem1} alt="" />
         <h1>Очереди и долгое ожидание на мойках</h1>
         <p>Тратите время в живых очередях без возможности записаться заранее</p>
         <img src={img3} alt=""  className='cardsImg' />
       </div>
       <div className='problems__othercard'>
         <div className='othercard1'>
-        <img src={img1} alt="" />
+        <img src={problem2} alt="" />
         <h1>Невозможно заранее спланировать мойку</h1>
         <p>Из-за ожидания и занятых слотов сложно встроить мойку в день</p>
         </div>
@@ -25,7 +27,7 @@ function Problem() {
         </div>
       </div>
       <div className='problems__card'>
-        <img src={img1} alt="" />
+        <img src={problem3} alt="" />
         <h1>Непрозрачные цены на услуги мойки</h1>
         <p>Итоговая стоимость становится известна только на месте</p>
         <img className='cardsImg' src={img3} alt="" />

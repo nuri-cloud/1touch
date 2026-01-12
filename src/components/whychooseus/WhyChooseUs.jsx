@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './WhyChooseUs.scss';
-import img from '../../assets/image/01.png';
-import img1 from '../../assets/image/02.png';
-import img2 from '../../assets/image/03.png';
-import img3 from '../../assets/image/04.png';
+import img from '../../assets/svg/01.svg';
+import img1 from '../../assets/svg/02.svg';
+import img2 from '../../assets/svg/03.svg';
+import img3 from '../../assets/svg/04.svg';
 
 function WhyChooseUs() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -64,13 +64,13 @@ function WhyChooseUs() {
                   // На десктопе чередуем
                   reason.id <= 2 ? (
                     <>
-                      <img src={reason.number} alt="" />
+                    <img src={reason.number} alt="" />
                       <p className="reason-card__description">{reason.description}</p>
                     </>
                   ) : (
                     <>
                       <p className="reason-card__description1">{reason.description}</p>
-                      <img src={reason.number} alt="" />
+                    <img src={reason.number} alt="" />
                     </>
                   )
                 )}
