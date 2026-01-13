@@ -63,6 +63,9 @@ $bg-social: #F0F5FF;
         margin: 0;
         font-weight: 500;
         color: $text-dark;
+        @media (max-width:480px) {
+            font-size: 20px;
+        }
       }
       p {
         font-size: 14px;
@@ -146,8 +149,14 @@ $bg-social: #F0F5FF;
   &__apps {
     display: flex;
     gap: 15px;
-    .app-link {
+    a{
+      transition: all 0.3s ease;
       &:hover {
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
       }
     }
   }
@@ -177,24 +186,31 @@ $bg-social: #F0F5FF;
     font-size: 56px;
   }
 
-  .footer__apps {
-    flex-direction: column;
-    .app-link {
-      width: 100%;
-      max-width: 250px;
-    }
-  }
+  // .footer__apps {
+  //   .app-link {
+  //     width: 100%;
+  //     img{
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 }
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+    .footer__col--address{
+      margin-top: -10px;
+    }
     .contact-item{
           &__icon {
       width: 30px;
       height: 30px;
           }
     }
-    .footer__bottom{
-    .footer__apps{
-        display: none;
+      .footer__apps {
+    .app-link {
+      width: 100%;
+      img{
+        width: 100%;
+      }
     }
-    }
+  }
 }

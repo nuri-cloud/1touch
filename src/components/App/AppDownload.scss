@@ -33,6 +33,9 @@ $black: #000;
     font-size: 48px;
     font-weight: 500;
     color: $text-dark;
+    span{
+       font-weight: 700
+    }
   }
   
   &__description {
@@ -54,10 +57,8 @@ $black: #000;
     align-items: center;
     text-decoration: none;
     transition: all 0.3s ease;
-    
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
     
     &:active {
@@ -158,8 +159,8 @@ $black: #000;
     
     &__buttons {
        display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
     gap: 15px;
     flex-wrap: nowrap;
     }
@@ -204,17 +205,10 @@ $black: #000;
     &__buttons {
         display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     gap: 15px;
     }
     
-     &__btn {
-         img {
-        width: 134px;
-        height: 50px;
-        flex-shrink: 0;
-      }
-    }
     
     }
 
@@ -227,11 +221,17 @@ $black: #000;
     }
     
     &__title {
-      font-size: 24px;
+      text-align: start;
+      font-size: 28px;
+       margin-bottom: -10px;
+      br {
+        display: block;
+      }
     }
     
     &__description {
-      font-size: 13px;
+        text-align: start;
+      font-size: 16px;
     }
     
     &__btn-label {
@@ -241,7 +241,14 @@ $black: #000;
     &__btn-store {
       font-size: 14px;
     }
-    
+    &__btn {
+      width: 100%;
+      height: auto;
+         img {
+        width: 100%;
+        height: 10%;
+      }
+    }
     &__qr-wrapper {
       width: 92%;
       height: auto;
@@ -253,39 +260,14 @@ $black: #000;
       }
     }
   }
-  @media (max-width: 360px) {
-    padding: 25px 10px;
-    
-    &__container {
-      padding: 20px 20px;
-    }
+  @media (max-width: 380px) {
     
     &__title {
-      font-size: 20px;
+      font-size: 26px;
     }
-    
-    &__description {
-      font-size: 10px;
-    }
-    
-    &__btn-label {
-      font-size: 9px;
-    }
-     &__btn {
-         img {
-        width: 100px;
-        height: 40px;
-        flex-shrink: 0;
-      }
-    }
-    &__btn-store {
+      &__description {
+        text-align: start;
       font-size: 14px;
-    }
-    
-    &__qr-wrapper {
-      width: 200px;
-      height: 200px;
-      padding: 12px;
     }
   }
 }

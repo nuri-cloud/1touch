@@ -317,14 +317,15 @@ line-height: 55px;
 
     &__title {
       font-size: 30px;
-      margin-bottom: 30px;
+      margin-bottom: 3px;
       line-height: 40px;
     }
   }
 .reason-description{
     img{
-      width: 120px;
-      height: 6vh;
+      margin-top: 10px;
+      width: 150px;
+      height: 9vh;
     }
   }
   .reason-card {
@@ -352,7 +353,10 @@ line-height: 55px;
   }
 .reason-description{
     img{
-      width: 90px;
+      margin-top: 10px;
+      width: 157px;
+      height: 100px;
+      margin-bottom: 0px;
     }
   }
   .reason-card {
@@ -369,15 +373,17 @@ line-height: 55px;
       font-size: 60px;
       margin-bottom: 12px;
     }
-
+    
     &__title {
+      padding-right: 30px;
       font-size: 22px;
       margin-bottom: 10px;
     }
 
     &__description {
+        padding-right: 30px;
       font-size: 15px;
-       margin-top: -20px;
+       margin-top: -10px;
     }
   }
 }
@@ -406,7 +412,7 @@ line-height: 55px;
     }
 
     &__description {
-      margin-top: -20px;
+      margin-top: -10px;
       font-size: 13px;
     }
   }

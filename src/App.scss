@@ -69,8 +69,8 @@ body.dark-theme {
     background: linear-gradient(
   to right, 
   rgb(240, 240, 240) 0%,    // Начало: темный
-  rgb(243, 243, 243) 50%,   // Держим темный до 40%
-  rgba(0, 70, 210, 1) 90%, // Плавный переход через полупрозрачный
+  rgb(196, 185, 185) 50%,   // Держим темный до 40%
+  rgb(5, 61, 175) 90%, // Плавный переход через полупрозрачный
   rgba(0, 70, 210, 1) 100%   // Конец: синий
 );
 -webkit-background-clip: text;
@@ -81,7 +81,7 @@ background-clip: text;
     background: linear-gradient(
   to right, 
   rgb(240, 240, 240) 0%,    // Начало: темный
-  rgb(243, 243, 243) 50%,   // Держим темный до 40%
+  rgb(202, 188, 188) 50%,   // Держим темный до 40%
   rgba(0, 70, 210, 1) 90%, // Плавный переход через полупрозрачный
   rgba(0, 70, 210, 1) 100%   // Конец: синий
 );
@@ -157,6 +157,9 @@ background-clip: text;
       .othercard2{
         background-color: #1b1b1b !important;
       }
+  }
+  .header{
+    background-color: #121212;
   }
 }
 html {

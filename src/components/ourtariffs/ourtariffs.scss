@@ -39,8 +39,8 @@ $badge-perple: #B26FFF;
   margin-top: 40px;
   padding: 0 0px;
   animation: fadeInUp 0.8s ease-out;
-  max-width: 1380px;
-  margin-left: auto;
+  max-width: 1248px;
+  margin: auto;
   // margin-right: auto;
 
   h1 {
@@ -59,7 +59,7 @@ $badge-perple: #B26FFF;
   }
 
   .tariffsSwiper {
-    padding: 10px 5px;
+    padding: 40px 0px;
     cursor: grab;
     width: 100%;
 
@@ -180,12 +180,6 @@ $badge-perple: #B26FFF;
         position: relative;
         padding-left: 30px;
         line-height: 1.5;
-        transition: transform 0.2s ease;
-
-        &:hover {
-          transform: translateX(5px);
-        }
-
         &::before {
           content: url("../../assets/svg/Danger Circle.svg");
           position: absolute;
@@ -227,6 +221,7 @@ $badge-perple: #B26FFF;
 @media (max-width: 1400px) {
   .ourtariffs {
     max-width: 1270px;
+    margin-left: auto;
   }
 }
 
@@ -273,7 +268,7 @@ $badge-perple: #B26FFF;
     }
 
       .tariffCard {
-        padding: 20px;
+        padding: 30px;
         border-radius: 35px;
 
         .badge {
@@ -373,7 +368,12 @@ $badge-perple: #B26FFF;
         display: none; // Скрываем пагинацию
       }
     }
-
+  .tariffCard{
+      &:hover {
+      transform: translateY(0px);
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.12);
+    }
+  }
     // .tariffCard {
     //   padding: 18px;
     //   border-radius: 30px;
@@ -432,7 +432,6 @@ $badge-perple: #B26FFF;
     }
 
     .tariffCard {
-      padding: 16px;
   &:hover {
       transform: translateY(0px);
       box-shadow: 0 0px 0px rgba(0, 0, 0, 0.12);

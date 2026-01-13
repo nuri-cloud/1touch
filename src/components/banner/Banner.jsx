@@ -1,7 +1,7 @@
 import React from 'react';
 import './Banner.scss';
-// import appStore from '../../assets/svg/button.svg';
-// import googlePlay from '../../assets/svg/button (1).svg';
+import appleLogo from '../../assets/svg/button (2).svg';
+import googlePlayLogo from '../../assets/svg/button (3).svg';
 import phone from '../../assets/image/экран 1 (1).png';
 import phone1 from '../../assets/image/экран 2.png';
 import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1.png';
@@ -11,8 +11,8 @@ function Banner() {
     <div className="banner container">
       {/* <div className="banner__background">
         <img src={backfone} alt="" className="banner__backfone" />
-      </div>
-       */}
+      </div> */}
+      
       <div className="banner__container">
         <div className="banner__content">
           <h1 className="banner__title">
@@ -45,7 +45,25 @@ function Banner() {
         </div>
 <div className="banner__stores">
           </div>
-  
+   <div className="app-download__buttons">
+              <a 
+                href="https://apps.apple.com" 
+                className="app-download__btn app-download__btn--apple"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                  <img src={appleLogo} alt="App Store" />
+              </a>
+              
+              <a 
+                href="https://play.google.com" 
+                className="app-download__btn app-download__btn--google"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                 <img src={googlePlayLogo} alt="Google Play" />
+              </a>
+            </div>
       </div>
     </div>
   );

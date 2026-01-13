@@ -1,4 +1,4 @@
-$blue: #3083FF;
+$blue: rgba(24, 90, 220, 1);
 $bg-light: #FAFAFA;
 $text-dark: #191919;
 $text-gray: #9EA3AC;
@@ -53,8 +53,10 @@ $text-gray: #9EA3AC;
     
     img {
       position: absolute;
-      top: -250px;
+      top: -400px;
       right: 0px;
+      width: 375px;
+      height: auto;
       max-width: 100%;
       
       height: auto;
@@ -77,8 +79,9 @@ $text-gray: #9EA3AC;
   }
 
   &__icon {
+    padding-top: 3px;
     width: 48px;
-    height: 48px;
+    height: 45px;
     background-color: $blue;
     border-radius: 50%;
     display: flex;

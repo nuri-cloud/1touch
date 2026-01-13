@@ -55,13 +55,11 @@ function WhyChooseUs() {
               <h3 className="reason-card__title">{reason.title}</h3>
               <div className='reason-description'>
                 {isMobile ? (
-                  // На мобилке всегда одинаково: картинка сверху, текст снизу
                   <>
                     <img src={reason.number} alt="" />
                     <p className="reason-card__description">{reason.description}</p>
                   </>
                 ) : (
-                  // На десктопе чередуем
                   reason.id <= 2 ? (
                     <>
                     <img src={reason.number} alt="" />

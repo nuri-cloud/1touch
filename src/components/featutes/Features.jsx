@@ -1,6 +1,6 @@
 import React from 'react';
 import './Styles.scss';
-import phoneImg from '../../assets/svg/Group 36689.svg'
+import phoneImg from '../../assets/image/1.png'
 import icon1 from '../../assets/svg/Frame (35).svg'
 import icon2 from '../../assets/svg/Frame (36).svg'
 import icon3 from '../../assets/svg/Frame (37).svg'

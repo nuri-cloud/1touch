@@ -90,7 +90,7 @@ $mobile: 480px;
                 height: auto;
                 min-height: 400px;
                 border-radius: 30px;
-                padding: 20px;
+                padding: 30px;
             }
 
             h1{
@@ -101,29 +101,27 @@ $mobile: 480px;
                 margin-bottom: 10px;
 
                 @media (max-width: $tablet) {
-                    font-size: 20px;
+                    font-size: 24px;
                     margin-top: 15px;
                 }
 
                 @media (max-width: $mobile) {
-                    font-size: 18px;
+                    font-size: 24px;
                 }
             }
 
             p{
-                font-size: 16px;
+                font-size: 17px;
                 font-weight: 400;
                 color: $text-gray;
                 line-height: 1.6;
 
                 @media (max-width: $mobile) {
-                    font-size: 15px;
+                    font-size: 17px;
                 }
             }
 
             .cardsImg{
-                // width: 334px;
-                // height: 334px;
                 bottom: 0px;
                 right: 0px;
                 position: absolute;
@@ -188,7 +186,7 @@ $mobile: 480px;
                     height: auto;
                     min-height: 200px;
                     border-radius: 30px;
-                    padding: 25px 20px;
+                    padding: 30px 30px;
                 }
 
                 h1{
@@ -199,23 +197,23 @@ $mobile: 480px;
                     margin-bottom: 10px;
 
                     @media (max-width: $tablet) {
-                        font-size: 20px;
+                        font-size: 24px;
                         margin-top: 15px;
                     }
 
                     @media (max-width: $mobile) {
-                        font-size: 18px;
+                        font-size: 24px;
                     }
                 }
 
                 p{
-                    font-size: 16px;
+                    font-size: 17px;
                     font-weight: 400;
                     color: $text-gray;
                     line-height: 1.6;
 
                     @media (max-width: $mobile) {
-                        font-size: 15px;
+                        font-size: 17px;
                     }
                 }
 

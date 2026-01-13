@@ -1,9 +1,9 @@
 import React from 'react';
 import './HowItWorks.scss';
-import step from '../../assets/svg/Тарифы-portrait 2 (1).svg';
-import step1 from '../../assets/svg/Тарифы-portrait 2 (2).svg';
-import step2 from '../../assets/svg/Тарифы-portrait 2 (3).svg';
-import step3 from '../../assets/svg/Тарифы-portrait 2 (4).svg';
+import step from '../../assets/image/1 шаг.png';
+import step1 from '../../assets/image/2 шаг.png';
+import step2 from '../../assets/image/3 шаг.png';
+import step3 from '../../assets/image/4 шаг.png';
 
 function HowItWorks() {
   const steps = [

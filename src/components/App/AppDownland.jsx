@@ -10,7 +10,7 @@ const AppDownload = () => {
       <div className="app-download__container">
         <div className="app-download__content">
           <h2 className="app-download__title">
-           Скачивайте <br /> приложение ONETOUCH
+           Скачивайте <br /> приложение <span>ONETOUCH</span>
           </h2>
           
           <p className="app-download__description">
