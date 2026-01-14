@@ -38,11 +38,11 @@ const AppDownload = () => {
           </div>
         </div>
         
-        <div className="app-download__qr">
+        {/* <div className="app-download__qr"> */}
           <div className="app-download__qr-wrapper">
            <img src={qrCodeImage} alt="QR Code" />
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

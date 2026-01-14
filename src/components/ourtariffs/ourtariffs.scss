@@ -230,7 +230,7 @@ margin-right: 0 !important;
     
     h1 {
       font-size: 42px;
-      margin-bottom: 35px;
+      margin-bottom: 5px;
     }
 
   }
@@ -238,11 +238,11 @@ margin-right: 0 !important;
 
 @media (max-width: 1024px) {
   .ourtariffs {
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 0 0px 0px 20px;
     h1 {
       font-size: 38px;
-      margin-bottom: 30px;
+      margin-bottom: 0px;
     }
 
     .tariffs-carousel {
@@ -254,12 +254,12 @@ margin-right: 0 !important;
 
 @media (max-width: 768px) {
   .ourtariffs {
-    margin-top: 25px;
+    margin-top: 40px;
     max-width: 100%;
 
     h1 {
       font-size: 32px;
-      margin-bottom: 25px;
+      margin-bottom: 0px;
     }
 
     .tariffs-carousel {
@@ -316,10 +316,10 @@ margin-right: 0 !important;
 
 @media (max-width: 640px) {
   .ourtariffs {
+    margin-top: 0px;
       padding: 0 0px 0px 15px;
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 0px;
     }
 
     // .tariffCard {
