@@ -87,11 +87,11 @@ function Ourtariffs() {
           breakpoints={{
             480: {
               slidesPerView: 1.2,
-              spaceBetween: 15
+              spaceBetween: 20
             },
             640: {
               slidesPerView: 2.3,
-              spaceBetween: 18
+              spaceBetween: 20
             },
             768: {
               slidesPerView: 2.3,
@@ -103,7 +103,7 @@ function Ourtariffs() {
             },
             1200: {
               slidesPerView: 3.3,
-              spaceBetween: 40
+              spaceBetween: 28
             }
           }}
           className="tariffsSwiper"

@@ -27,7 +27,7 @@ function HowItWorks() {
     },
     {
       id: 4,
-      step: '3 шаг',
+      step: '4 шаг',
       title: 'Забронируйте по мойку',
       image: step3
     }

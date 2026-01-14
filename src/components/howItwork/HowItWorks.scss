@@ -117,7 +117,7 @@ $textgray: #848484;
   }
 
   &__title {
-    font-size: 28px;
+    font-size: 17px;
     font-weight: 400;
     color: $text-gray;
     line-height: 1.4;
@@ -344,12 +344,13 @@ $textgray: #848484;
 
   .steps-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
     max-width: 500px;
     margin: 0 auto;
   }
 
   .step-card {
+    padding-top: 24px;
     border-radius: 30px;
     &__image {
      max-width: 80%;

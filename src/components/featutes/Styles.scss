@@ -80,8 +80,8 @@ $text-gray: #9EA3AC;
 
   &__icon {
     padding-top: 3px;
-    width: 48px;
-    height: 45px;
+    width: 40px;
+    height: 38px;
     background-color: $blue;
     border-radius: 50%;
     display: flex;
@@ -129,6 +129,7 @@ $text-gray: #9EA3AC;
   }
   .benefits__grid {
     grid-template-columns: 1fr; 
+    gap: 20px;
   }
   .benefit-card {
     padding: 30px;
