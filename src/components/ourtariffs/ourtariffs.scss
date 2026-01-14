@@ -37,11 +37,10 @@ $badge-perple: #B26FFF;
 
 .ourtariffs {
   margin-top: 40px;
-  padding: 0 0px;
+  padding: 50px 0px 0px 0;
   animation: fadeInUp 0.8s ease-out;
   max-width: 1248px;
   margin: auto;
-  // margin-right: auto;
 
   h1 {
     font-weight: 500;
@@ -220,8 +219,9 @@ $badge-perple: #B26FFF;
 // Responsive Design
 @media (max-width: 1400px) {
   .ourtariffs {
-    max-width: 1270px;
-    margin-left: auto;
+   max-width: 1300px;
+margin-right: 0 !important;
+
   }
 }
 
@@ -239,15 +239,14 @@ $badge-perple: #B26FFF;
 @media (max-width: 1024px) {
   .ourtariffs {
     margin-top: 30px;
-    padding: 0 15px;
-
+    padding: 0 0px 0px 20px;
     h1 {
       font-size: 38px;
       margin-bottom: 30px;
     }
 
     .tariffs-carousel {
-      padding: 15px 0 55px;
+      padding: 15px 0 0px;
     }
 
   }
@@ -264,7 +263,7 @@ $badge-perple: #B26FFF;
     }
 
     .tariffs-carousel {
-      padding: 10px 0 50px;
+      padding: 10px 0 0px;
     }
 
       .tariffCard {
@@ -317,6 +316,7 @@ $badge-perple: #B26FFF;
 
 @media (max-width: 640px) {
   .ourtariffs {
+      padding: 0 0px 0px 15px;
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
@@ -335,7 +335,7 @@ $badge-perple: #B26FFF;
 @media (max-width: 480px) {
   .ourtariffs {
     margin-top: 20px;
-    padding: 0 10px;
+    padding: 0 15px;
 
     h1 {
       font-size: 28px;
@@ -343,7 +343,7 @@ $badge-perple: #B26FFF;
     }
 
     .tariffs-carousel {
-      padding: 10px 0 20px;
+      padding: 10px 0 0px;
     }
 
     .tariffsSwiper {
