@@ -62,7 +62,7 @@ function WhyChooseUs() {
                 ) : (
                   reason.id <= 2 ? (
                     <>
-                    <img src={reason.number} alt="" />
+                    <img className='reason-img2' src={reason.number} alt="" />
                       <p className="reason-card__description">{reason.description}</p>
                     </>
                   ) : (

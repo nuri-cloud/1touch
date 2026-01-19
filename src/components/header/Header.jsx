@@ -10,13 +10,10 @@ function Header() {
   const [openLang, setOpenLang] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  
-  // Новые состояния для скролла
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Эффект для темы
   useEffect(() => {
     if (isDark) {
       document.body.classList.add('dark-theme');
@@ -25,36 +22,31 @@ function Header() {
     }
   }, [isDark]);
 
-  // Эффект для обработки скролла
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollThreshold = 100;
       const delta = 5;
 
-      // Проверяем минимальное изменение скролла
       if (Math.abs(currentScrollY - lastScrollY) < delta) {
         return;
       }
 
-      // Добавляем класс scrolled после порога
       if (currentScrollY > scrollThreshold) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Скрываем хедер при скролле вниз, показываем при скролле вверх
       if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
-        setIsHidden(true); // Скролл вниз
+        setIsHidden(true); 
       } else {
-        setIsHidden(false); // Скролл вверх
+        setIsHidden(false); 
       }
 
       setLastScrollY(currentScrollY);
     };
 
-    // Добавляем слушатель с throttle для производительности
     let ticking = false;
     const onScroll = () => {
       if (!ticking) {
@@ -77,7 +69,6 @@ function Header() {
   const closeMenu = () => setOpenMenu(false);
   const toggleTheme = () => setIsDark(!isDark);
 
-  // Формируем классы для хедера
   const headerClasses = [
     'header',
     isScrolled && 'header--scrolled',
@@ -156,7 +147,6 @@ function Header() {
           </span>
         </div>
 
-        {/* Бургер меню */}
         <button 
           className={`header__burger ${openMenu ? 'header__burger--active' : ''}`}
           onClick={toggleMenu}
@@ -168,7 +158,6 @@ function Header() {
           <span></span>
         </button>
 
-        {/* Оверлей для закрытия меню */}
         {openMenu && (
           <div 
             className="header__overlay" 

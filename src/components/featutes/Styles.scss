@@ -43,6 +43,9 @@ $text-gray: #9EA3AC;
     grid-template-columns: repeat(2, 1fr); // 2 колонки
     gap: 30px;
     flex: 1;
+    @media (max-width: 1024px) {
+      gap: 20px;
+    }
   }
 
   &__phone {
@@ -108,14 +111,13 @@ $text-gray: #9EA3AC;
   }
 }
 
-// --- Адаптив ---
 @media (max-width: 1100px) {
   .benefits__content {
     flex-direction: column-reverse;
   }
   .benefits__phone {
     position: static;
-    order: -1; // Телефон сверху на планшетах
+    order: -1;
     margin-bottom: 40px;
     img{
       position: static;

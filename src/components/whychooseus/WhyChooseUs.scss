@@ -75,17 +75,11 @@ line-height: 55px;
     margin-top: 20px;
     display: flex;
     align-items: start;
-    gap: 15px;
+    gap: 25px;
     justify-content: space-between;
-    // .whychoseusImg{
-    //   position: relative;
-    //   height: 100px;
-    //   img{
-    //     position: absolute;
-    //     bottom: -15px;
-    //     left: 10px;
-    //   }
-    // }
+    .reason-img2{
+      margin-left: 15px;
+    }
 }
 .reason-card {
     padding-top: 20px;
@@ -115,8 +109,8 @@ line-height: 55px;
   }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.042);
 
     &::before {
       opacity: 1;
@@ -213,7 +207,7 @@ line-height: 55px;
 
 @media (max-width: 1024px) {
   .why-choose-us {
-    padding: 0px 20px;
+    padding: 0px 30px;
 
     &__title {
       font-size: 38px;

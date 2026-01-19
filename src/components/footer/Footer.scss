@@ -11,13 +11,8 @@ $bg-social: #F0F5FF;
   @media(max-width:1024px){
      padding: 60px 20px 30px;
   }
-  @media(max-width:1024px){
-     padding: 60px 15px 30px;
-  }
   &__container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0px;
   }
 
   &__top {

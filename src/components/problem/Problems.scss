@@ -54,7 +54,7 @@ $mobile: 480px;
         gap: 30px;
         @media (max-width: $laptop) {
             padding: 20px;
-            gap: 25px;
+            gap: 20px;
             grid-template-columns: repeat(2, 1fr);
         }
 
