@@ -11,7 +11,6 @@ import Problems from '../../components/problem/Problem'
 function Home() {
   return (
     <div>
-      <Header/>
       <Banner/>
       <Problems/>
       <Features/>
@@ -19,8 +18,7 @@ function Home() {
       <WhyChooseUs/>
       <Ourtariffs/>
       <AppDownload/>
-      <Footer/>
-    </div>
+      </div>
   )
 }
 

@@ -1,0 +1,259 @@
+.modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(255, 255, 255, 0.125);
+backdrop-filter: blur(2px) saturate(80%);
+border: 1px solid rgba(255, 255, 255, 0.084);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+          padding: 20px;
+          animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .modal-content {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          max-height: 90vh;
+          overflow-y: auto;
+          animation: slideUp 0.3s ease-out;
+          width: 100%;
+          max-width: 600px;
+        }
+
+        .modal-content.modal--small {
+          max-width: 400px;
+        }
+
+        .modal-content.modal--medium {
+          max-width: 600px;
+        }
+
+        .modal-content.modal--large {
+          max-width: 900px;
+        }
+
+        @keyframes slideUp {
+          from {
+            transform: translateY(30px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        .modal-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 24px;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h2 {
+          margin: 0;
+          font-size: 24px;
+          font-weight: 600;
+          color: #111827;
+        }
+
+        .modal-close {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          transition: background-color 0.2s;
+          color: #6b7280;
+          font-size: 32px;
+          line-height: 1;
+        }
+
+        .modal-close:hover {
+          background-color: #f3f4f6;
+          color: #111827;
+        }
+
+        .modal-body {
+          padding: 24px;
+        }
+
+        /* App styles */
+        .app-container {
+          min-height: 100vh;
+          padding: 40px 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .app-container h1 {
+          text-align: center;
+          color: white;
+          margin-bottom: 40px;
+          font-size: 32px;
+        }
+
+        .buttons-grid {
+          display: grid;
+          gap: 20px;
+          max-width: 600px;
+          margin: 0 auto;
+          grid-template-columns: 1fr;
+        }
+
+        .btn {
+          padding: 14px 28px;
+          border: none;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .btn--primary {
+          background-color: #3b82f6;
+          color: white;
+        }
+
+        .btn--primary:hover {
+          background-color: #2563eb;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn--secondary {
+          background-color: #6b7280;
+          color: white;
+        }
+
+        .btn--secondary:hover {
+          background-color: #4b5563;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4);
+        }
+
+        .btn--accent {
+          background-color: #8b5cf6;
+          color: white;
+        }
+
+        .btn--accent:hover {
+          background-color: #7c3aed;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+
+        .modal-actions {
+          display: flex;
+          gap: 12px;
+          justify-content: flex-end;
+          margin-top: 24px;
+        }
+
+        .form-group {
+          margin-bottom: 20px;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+          color: #374151;
+        }
+
+        .form-group input {
+          width: 100%;
+          padding: 10px 14px;
+          border: 1px solid #d1d5db;
+          border-radius: 6px;
+          font-size: 16px;
+          transition: border-color 0.2s;
+          box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+          outline: none;
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .modal-content-example h3 {
+          color: #111827;
+          margin-top: 20px;
+          margin-bottom: 12px;
+        }
+
+        .modal-content-example p {
+          color: #4b5563;
+          line-height: 1.6;
+        }
+
+        .modal-content-example ul {
+          color: #4b5563;
+          line-height: 1.8;
+          padding-left: 20px;
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+          .buttons-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          .modal-header h2 {
+            font-size: 28px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .buttons-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+
+        @media (max-width: 639px) {
+          .modal-content.modal--small,
+          .modal-content.modal--medium,
+          .modal-content.modal--large {
+            max-width: 100%;
+          }
+          
+          .modal-header {
+            padding: 20px;
+          }
+          
+          .modal-header h2 {
+            font-size: 20px;
+          }
+          
+          .modal-body {
+            padding: 20px;
+          }
+          
+          .modal-actions {
+            flex-direction: column;
+          }
+          
+          .modal-actions .btn {
+            width: 100%;
+          }
+        }

@@ -161,6 +161,31 @@ background-clip: text;
   .header{
     background-color: #121212;
   }
+  .get-in-line-modal {
+    background-color: #121212 ;
+    .modal-content {
+      background-color: #1f2937;
+    }
+
+    .get-in-line-content {
+      h1 {
+        color: #f9fafb;
+      }
+
+      p {
+        color: #d1d5db;
+      }
+
+      .btn-secondary {
+        background-color: #374151;
+        color: #e5e7eb;
+
+        &:hover {
+          background-color: #4b5563;
+        }
+      }
+    }
+  }
 }
 html {
   scroll-behavior: smooth;

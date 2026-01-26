@@ -6,7 +6,7 @@ import qrCodeImage from '../../assets/svg/download-qr-code 1.svg';
 
 const AppDownload = () => {
   return (
-    <div className="app-download">
+    <div className="app-download" id='downlend'>
       <div className="app-download__container">
         <div className="app-download__content">
           <h2 className="app-download__title">

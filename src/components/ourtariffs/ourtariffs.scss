@@ -138,7 +138,7 @@ $badge-perple: #B26FFF;
         background: $badge-perple;
         
         &:hover {
-          background: darken($badge-perple, 10%);
+          background: ($badge-perple, 10%);
         }
       }
     }
@@ -204,7 +204,7 @@ $badge-perple: #B26FFF;
       margin-top: auto;
 
       &:hover {
-        background: darken($primary-blue, 10%);
+        background: ($primary-blue, 10%);
         transform: scale(1.02);
         box-shadow: 0 8px 20px rgba($primary-blue, 0.3);
       }
