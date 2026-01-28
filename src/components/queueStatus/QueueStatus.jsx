@@ -164,7 +164,7 @@ export const QueueStatus = () => {
       <div className="queue-list">
         <h4>Список ваших очередей</h4>
         {(currentBooking.queue || []).map((booking, index) => {
-          const isCurrentUser = booking.booking_id === currentBooking.booking_id;
+          const isCurrentUser = currentBooking.user_position === booking.position;
           
           return (
             <div 
@@ -177,10 +177,17 @@ export const QueueStatus = () => {
                 </div>
                 <div className="details">
                   <p className="status-text">
-                    {booking.car_brand || `0${booking.position} в очереди`} {isCurrentUser && '(Вы)'}
+                     {isCurrentUser
+  ? 'Вы в очереди'
+    : booking.position < 10
+      ? `0${booking.position} в очереди`
+      : `${booking.position} в очереди`
+}
                   </p>
                   <p className="sub-text">
-                    {booking.car_model || 'Отсутствует'}
+                 {booking.car_brand || booking.car_model
+  ? `${booking.car_brand ?? ''} ${booking.car_model ?? ''}`.trim()
+  : 'Отсутствует'}
                   </p>
                 </div>
               </div>

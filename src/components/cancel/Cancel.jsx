@@ -1,5 +1,5 @@
 import { Modal } from '../ui/modal/Modal';
-import img from '../../assets/svg/download-qr-code 1 (1).svg'
+import img from '../../assets/image/Снимок экрана 2026-01-28 133923.png'
 import './MobileOnlyModal.scss';
 function Cancel({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -13,7 +13,7 @@ function Cancel({ isOpen, onClose }) {
           Отсканируйте QR-код, чтобы открыть этот сайт на телефоне и
           продолжить постановку в очередь.
         </p>
-        
+
         <img src={img} alt="QR" />
 
         <button className='btn-primary' onClick={onClose}>Закрыть</button>

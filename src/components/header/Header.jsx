@@ -86,7 +86,7 @@ const handleNavClick = (sectionId) => {
   const headerClasses = [
     'header',
     isScrolled && 'header--scrolled',
-    isHidden && 'header--hidden'
+    // isHidden && 'header--hidden'
   ].filter(Boolean).join(' ');
 
   return (
