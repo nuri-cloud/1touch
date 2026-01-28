@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal } from '../ui/modal/Modal';
 import { useNavigate } from 'react-router-dom';
-import { Html5Qrcode } from 'html5-qrcode'; // Используем чистый класс без встроенного UI
+import { Html5Qrcode } from 'html5-qrcode';
 import './style.scss';
 
 function GetInLine({ isOpen, onClose }) {
@@ -9,16 +9,28 @@ function GetInLine({ isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showScanner, setShowScanner] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   
   const scannerRef = useRef(null);
   const isProcessing = useRef(false);
+
+  // Проверка токена при открытии модалки
+  useEffect(() => {
+    if (isOpen) {
+      const guestToken = localStorage.getItem('guestToken');
+      if (guestToken) {
+        // Если токен есть, сразу переходим в очередь
+        onClose();
+        navigate('/queue');
+      }
+    }
+  }, [isOpen, navigate, onClose]);
 
   // Функция остановки камеры
   const stopScanner = async () => {
     if (scannerRef.current && scannerRef.current.isScanning) {
       try {
         await scannerRef.current.stop();
-        // Очищаем DOM после остановки
         const reader = document.getElementById('reader'); 
         if (reader) reader.innerHTML = ''; 
       } catch (err) {
@@ -30,7 +42,6 @@ function GetInLine({ isOpen, onClose }) {
   useEffect(() => {
     const startCamera = async () => {
       if (showScanner && isOpen) {
-        // Инициализируем чистый сканер
         const html5QrCode = new Html5Qrcode("reader");
         scannerRef.current = html5QrCode;
 
@@ -76,6 +87,8 @@ function GetInLine({ isOpen, onClose }) {
 
   const handleJoinQueue = async (id) => {
     setLoading(true);
+    setError(null);
+    
     try {
       const response = await fetch('/api/payment/guest-bookings/', {
         method: 'POST',
@@ -84,16 +97,24 @@ function GetInLine({ isOpen, onClose }) {
       });
 
       const data = await response.json();
+      
       if (response.ok) {
-        localStorage.setItem('guestToken', data.token || data.guest_token);
-        onClose();
-        navigate('/queue');
+        const token = data.token || data.guest_token;
+        localStorage.setItem('guestToken', token);
+        
+        setShowSuccess(true);
+        
+        setTimeout(() => {
+          onClose();
+          navigate('/queue');
+        }, 6000);
       } else {
         throw new Error(data.message || 'Ошибка сервера');
       }
     } catch (err) {
       setError(err.message);
       isProcessing.current = false;
+    } finally {
       setLoading(false);
     }
   };
@@ -101,7 +122,23 @@ function GetInLine({ isOpen, onClose }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="get-in-line-modal">
       <div className="get-in-line-content">
-        {!showScanner ? (
+        {showSuccess ? (
+          <div className="success-message">
+            <div className="success-icon">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" fill="#4CAF50" fillOpacity="0.1"/>
+                <circle cx="40" cy="40" r="30" stroke="#4CAF50" strokeWidth="3"/>
+                <path d="M28 40L36 48L52 32" stroke="#4CAF50" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h1>Поздравляем! 🎉</h1>
+            <p>Вы успешно встали в очередь</p>
+            <div className="success-loader">
+              <div className="spinner"></div>
+              <span>Переход к очереди...</span>
+            </div>
+          </div>
+        ) : !showScanner ? (
           <>
             <h1>Встать в очередь на мойку?</h1>
             <p>Вы собираетесь встать в очередь. Хотите продолжить?</p>
@@ -119,7 +156,6 @@ function GetInLine({ isOpen, onClose }) {
             <h1>Сканирование QR</h1>
             <p>Наведите камеру на QR-код автомойки</p>
             
-            {/* Контейнер только для видео */}
             <div id="reader" className="qr-reader-container"></div>
 
             <div className="get-in-line-buttons">

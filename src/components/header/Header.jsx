@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import icon from '../../assets/svg/icon.svg';
 import { MdOutlineLightMode } from "react-icons/md";
 import GetInLine from '../getinline/GetInLine';
-import MobileOnlyModal from '../cancel/Cancel'; // Твой компонент Cancel
+import MobileOnlyModal from '../cancel/Cancel'; 
 import { useNavigate } from 'react-router-dom';
 
 function Header() {
@@ -16,14 +16,24 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  
-  // Состояния для модалок
   const [openGetInLine, setOpenGetInLine] = useState(false);
   const [openQrModal, setOpenQrModal] = useState(false);
 
   const navigate = useNavigate();
 
-  // Темная тема
+const handleNavClick = (sectionId) => {
+  closeMenu();
+  
+  // Если мы не на главной странице
+  if (window.location.pathname !== '/') {
+    navigate('/', { state: { scrollTo: sectionId } });
+  } else {
+    // Если уже на главной, просто скроллим
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+
   useEffect(() => {
     if (isDark) {
       document.body.classList.add('dark-theme');
@@ -32,30 +42,26 @@ function Header() {
     }
   }, [isDark]);
 
-  // Функция определения: Ноутбук/ПК или Мобилка
   const isLaptop = () => {
-    // Проверяем наличие тач-скрина и ширину экрана
     const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const isWide = window.innerWidth > 1024;
     return isWide || !hasTouch;
   };
 
-  // Логика открытия нужной модалки
   const handleOpenModal = (e) => {
     e.preventDefault();
 
     if (isLaptop()) {
-      setOpenQrModal(true);    // Открываем модалку с QR (Cancel) для ноутов
+      setOpenQrModal(true);   
       setOpenGetInLine(false);
     } else {
-      setOpenGetInLine(true);   // Открываем сканер (GetInLine) для мобилок
+      setOpenGetInLine(true);   
       setOpenQrModal(false);
     }
 
     closeMenu();
   };
 
-  // Логика скролла для скрытия хедера
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -93,12 +99,11 @@ function Header() {
         </div>
 
         <nav className={`header__nav ${openMenu ? 'header__nav--open' : ''}`}>
-          <a href="#AboutUs" onClick={closeMenu}>О приложении</a>
-          <a href="#tariffs" onClick={closeMenu}>Тарифы</a>
-          <a href="#Vygoda" onClick={closeMenu}>Выгода</a>
-          <a href="#downlend" onClick={closeMenu}>Скачать</a>
+          <a href="#AboutUs" onClick={() => handleNavClick('AboutUs')}>О приложении</a>
+          <a href="#tariffs" onClick={() => handleNavClick('tariffs')}>Тарифы</a>
+          <a href="#Vygoda" onClick={() => handleNavClick('Vygoda')}>Выгода</a>
+          <a href="#downlend" onClick={() => handleNavClick('downlend')}>Скачать</a>
           
-          {/* Кнопка вызова модалки */}
           <a href="#" onClick={handleOpenModal} className="nav-btn-highlight">Встать в очередь</a>
           
           <div className="header__nav-mobile">
@@ -141,13 +146,11 @@ function Header() {
 
         {openMenu && <div className="header__overlay" onClick={closeMenu}></div>}
 
-        {/* 1. Модалка Сканера (только для телефонов) */}
         <GetInLine
           isOpen={openGetInLine}
           onClose={() => setOpenGetInLine(false)}
         />
 
-        {/* 2. Модалка с QR-кодом (только для ноутбуков/ПК) */}
         <MobileOnlyModal
           isOpen={openQrModal}
           onClose={() => setOpenQrModal(false)}

@@ -19,11 +19,84 @@ $border-color: #e9ecef;
   }
   section {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 30px;
     margin-bottom: 20px;
     padding: 16px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.164);
   }
+  .error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  min-height: 400px;
+  
+  .error-icon {
+    margin-bottom: 24px;
+    animation: shake 0.5s ease-in-out;
+    
+    svg {
+      filter: drop-shadow(0 4px 12px rgba(255, 68, 68, 0.2));
+    }
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+  
+  .error-message {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 32px;
+    max-width: 400px;
+    line-height: 1.5;
+  }
+  
+  .retry-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    background: linear-gradient(135deg, #3083FF 0%, #1e5fcf 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(48, 131, 255, 0.3);
+    
+    svg {
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(48, 131, 255, 0.4);
+      
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(48, 131, 255, 0.3);
+    }
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
 }
 .status-cars{
   padding: 10px;
@@ -63,6 +136,7 @@ $border-color: #e9ecef;
     margin-bottom: 20px;
     
     .time-badge, .call-button {
+      text-decoration: none;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -85,6 +159,7 @@ $border-color: #e9ecef;
   &__position {
     .label-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       font-size: 0.9rem;
       span{
@@ -137,14 +212,14 @@ $border-color: #e9ecef;
 }
 .queue-list {
   padding: 0 !important;
-  h4 { padding: 16px; margin: 0; font-size: 18px; font-weight: 500; color: #4D4D4D;}
+  h4 { padding: 5px; margin: 0; font-size: 18px; font-weight: 500; color: #4D4D4D;}
 
   .queue-item {
     display: flex;
     justify-content: space-between;
     padding: 10px 12px;
     border-radius: 30px;
-
+  margin-top: 15px;
     &.active {
       background-color: #FAFAFA; // Можно выделить цветом
       .status-text { font-weight: bold; }
@@ -184,3 +259,22 @@ $border-color: #e9ecef;
     justify-content: start !important;
   }
 }
+/* HTML: <div class="loader"></div> */
+.loader {
+  margin: auto;
+  margin-top: 100px;
+  width: 30px;
+  padding: 5px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}

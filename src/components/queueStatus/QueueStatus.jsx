@@ -17,7 +17,7 @@ export const QueueStatus = () => {
 
   const fetchBookingData = async () => {
     if (fetchingRef.current) return;
-
+     
     try {
       fetchingRef.current = true;
       setLoading(true);
@@ -28,7 +28,6 @@ export const QueueStatus = () => {
         throw new Error('Токен доступа не найден. Пожалуйста, встаньте в очередь заново.');
       }
 
-      // ИСПОЛЬЗУЕМ ОТНОСИТЕЛЬНЫЙ ПУТЬ (чтобы работал прокси в Vite)
       const response = await fetch('/api/payment/guest-bookings/me/', {
         method: 'GET',
         headers: {
@@ -57,12 +56,8 @@ export const QueueStatus = () => {
 
   if (loading) {
     return (
-      <div className="queue-container container">
-        <div className="loading-state">
-          <div className="spinner"></div>
-          <p>Загрузка данных очереди...</p>
-        </div>
-      </div>
+     <div className='loader'>
+     </div>
     );
   }
 
@@ -70,27 +65,48 @@ export const QueueStatus = () => {
     return (
       <div className="queue-container container">
         <div className="error-state">
-          <p>❌ {error}</p>
+          <div className="error-icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="30" stroke="#FF4444" strokeWidth="3"/>
+              <path d="M32 20V36M32 44V44.01" stroke="#FF4444" strokeWidth="3" strokeLinecap="round"/>
+            </svg>
+          </div>
+          <h2>Что-то пошло не так</h2>
+          <p className="error-message">{error}</p>
           <button onClick={fetchBookingData} className="retry-button">
-            Попробовать снова
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C12.0711 2.5 13.9461 3.37857 15.2678 4.79289" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              <path d="M17.5 2.5V7.5H12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Повторить попытку
           </button>
         </div>
       </div>
     );
   }
+
   const bookings = Array.isArray(bookingData) ? bookingData : (bookingData ? [bookingData] : []);
+  
   if (bookings.length === 0) {
     return <div className="queue-container container"><p>Активных бронирований не найдено</p></div>;
   }
-  console.log(bookingData)
-  const currentBooking = bookings[0] || {};
-  const position = currentBooking.position || 0;
-  const peopleAhead = currentBooking.people_ahead || 0;
-  const totalInQueue = position + peopleAhead;
-  const progress = totalInQueue > 0 ? ((totalInQueue - peopleAhead) / totalInQueue) * 100 : 0;
-  const waitTime = currentBooking.wait_time || (peopleAhead * 3);
 
-  // ТВОЙ ОРИГИНАЛЬНЫЙ ДИЗАЙН БЕЗ ИЗМЕНЕНИЙ
+  console.log(bookingData);
+  
+  const currentBooking = bookings[0] || {};
+  const position = currentBooking.user_position || 0;
+  const totalInQueue = currentBooking.total_people_in_queue || 0;
+  const peopleAhead = position > 0 ? position - 1 : 0;
+
+  // Прямой прогресс: чем больше позиция, тем больше процент
+  const progress = totalInQueue > 0 ? (position / totalInQueue) * 100 : 0;
+  const waitTime = currentBooking.user_wait_time_minutes || (peopleAhead * 3);
+
+  // Безопасное получение статуса
+  const userStatus = currentBooking.user_status || {};
+  const statusLabel = userStatus.label || 'В ожидании';
+  const statusColor = userStatus.color || '#FF6900';
+
   return (
     <div className="queue-container">
       <div className="status-card">
@@ -98,10 +114,10 @@ export const QueueStatus = () => {
           <header className="status-card__header">
             <div className="profile">
               <div className="avatar">
-                <img src={image} alt="" />
+                <img src={currentBooking.image_url} alt="" />
               </div>
               <div className="info">
-                <h3>{currentBooking.car_wash_name || 'Rash'}</h3>
+                <h3>{currentBooking.carwash_name || 'Rash'}</h3>
                 <p>{currentBooking.address || 'Улица Панфилова, 106, Бишкек'}</p>
               </div>
             </div>
@@ -110,20 +126,20 @@ export const QueueStatus = () => {
           <div className="status-card__controls">
             <div className="time-badge">
               <img src={image2} alt="" />
-              <h3>09:00-12:00</h3>
+              <h3>{currentBooking.working_hours}</h3>
             </div>
-            <div className="time-badge">
+            <a href={`tel:${currentBooking.phone}`} className="time-badge">
               <img src={image3} alt="" /> 
               <h3>Позвонить</h3>
-            </div>
+            </a>
           </div>
         </section>
 
         <section className="status-card__position">
           <div className="label-row">
             <span>Ваша позиция</span>
-            <span className="waiting-status">
-              {currentBooking.status === 'cancelled' ? 'Отменено' : 'В ожидании'}
+            <span className="waiting-status" style={{color: statusColor}}>
+              {statusLabel}
             </span>
           </div>
           <div className="number-display">
@@ -147,31 +163,38 @@ export const QueueStatus = () => {
 
       <div className="queue-list">
         <h4>Список ваших очередей</h4>
-        {bookings.map((booking, index) => (
-          <div key={booking.id || index} className="queue-item active">
-            <div className="queue-item__left">
-              <div className="avatar-small">
-                <img src={image} alt="" />
+        {(currentBooking.queue || []).map((booking, index) => {
+          const isCurrentUser = booking.booking_id === currentBooking.booking_id;
+          
+          return (
+            <div 
+              key={booking.id || index} 
+              className={`queue-item active ${isCurrentUser ? 'current-user' : ''}`}
+            >
+              <div className="queue-item__left">
+                <div className="avatar-small">
+                  <img src={image} alt="" />
+                </div>
+                <div className="details">
+                  <p className="status-text">
+                    {booking.car_brand || `0${booking.position} в очереди`} {isCurrentUser && '(Вы)'}
+                  </p>
+                  <p className="sub-text">
+                    {booking.car_model || 'Отсутствует'}
+                  </p>
+                </div>
               </div>
-              <div className="details">
-                <p className="status-text">
-                  {booking.car_wash_name || 'Автомойка'}
+              <div className="queue-item__right">
+                <p className="time">
+                  {booking.joined_at || new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </p>
-                <p className="sub-text">
-                  {booking.car_model || 'Ваш автомобиль'}
+                <p className="plate">
+                  {booking.car_number || 'Нет номера'}
                 </p>
               </div>
             </div>
-            <div className="queue-item__right">
-              <p className="time">
-                {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-              </p>
-              <p className="plate">
-                {booking.car_number || 'В процессе'}
-              </p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

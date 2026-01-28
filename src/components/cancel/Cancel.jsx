@@ -13,7 +13,7 @@ function Cancel({ isOpen, onClose }) {
           Отсканируйте QR-код, чтобы открыть этот сайт на телефоне и
           продолжить постановку в очередь.
         </p>
-
+        
         <img src={img} alt="QR" />
 
         <button className='btn-primary' onClick={onClose}>Закрыть</button>

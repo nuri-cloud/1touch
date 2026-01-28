@@ -131,7 +131,7 @@ $badge-perple: #B26FFF;
         background: $badge-orange;
         
         &:hover {
-          background: darken($badge-orange, 10%);
+          background: $badge-orange;
         }
       }
       &--perple {
