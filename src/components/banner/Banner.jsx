@@ -4,7 +4,7 @@ import appleLogo from '../../assets/svg/button (2).svg';
 import googlePlayLogo from '../../assets/svg/button (3).svg';
 import phone from '../../assets/image/главный экран.png';
 import phone1 from '../../assets/image/экран(очередь).png';
-import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1 (1).png';
+import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1.png';
 
 function Banner() {
   return (
