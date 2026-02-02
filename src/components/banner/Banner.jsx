@@ -21,7 +21,7 @@ function Banner() {
               АВТОМОБИЛЬ
             </span><br />
             <span className="banner__title--indent1">
-            БЕЗ ОЧЕРЕДИ
+            ПО ОЧЕРЕДИ
             </span>
           </h1>
         

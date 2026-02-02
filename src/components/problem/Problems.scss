@@ -11,9 +11,9 @@ $tablet: 768px;
 $mobile: 480px;
 
 .problem{
-    margin-top: 200px;
+    margin-top: 100px;
     @media (max-width: $laptop) {
-        margin-top: 150px;
+        margin-top: 100px;
     }
 
     @media (max-width: $tablet) {
