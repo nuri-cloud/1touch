@@ -1,34 +1,34 @@
 import React from 'react';
 import './HowItWorks.scss';
-import step from '../../assets/image/1 шаг.png';
-import step1 from '../../assets/image/2 шаг.png';
-import step2 from '../../assets/image/3 шаг.png';
-import step3 from '../../assets/image/4 шаг.png';
+import step from '../../assets/image/1 шаг (1).png';
+import step1 from '../../assets/image/2 шаг (1).png';
+import step2 from '../../assets/image/3 шаг (2).png';
+import step3 from '../../assets/image/4 шаг (1).png';
 
 function HowItWorks() {
   const steps = [
     {
       id: 1,
       step: '1 шаг',
-      title: 'Выберите себе удобный тариф',
+      title: 'Выбираете себе удобный тариф',
       image: step
     },
     {
       id: 2,
       step: '2 шаг',
-      title: 'Ознакомьтесь ID/QR коду',
+      title: 'Оплачеваете по OR-коду',
       image: step1
     },
     {
       id: 3,
       step: '3 шаг',
-      title: 'Выберите точку',
+      title: 'Выбираете мойку',
       image: step2
     },
     {
       id: 4,
       step: '4 шаг',
-      title: 'Забронируйте по мойку',
+      title: 'Занимайте очередь на мойку',
       image: step3
     }
   ];

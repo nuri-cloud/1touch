@@ -2,9 +2,9 @@ import React from 'react';
 import './Banner.scss';
 import appleLogo from '../../assets/svg/button (2).svg';
 import googlePlayLogo from '../../assets/svg/button (3).svg';
-import phone from '../../assets/image/экран 1 (1).png';
-import phone1 from '../../assets/image/экран 2.png';
-import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1.png';
+import phone from '../../assets/image/главный экран.png';
+import phone1 from '../../assets/image/экран(очередь).png';
+import backfone from '../../assets/image/Gemini_Generated_Image_pezpyxpezpyxpezp 1 (1).png';
 
 function Banner() {
   return (
@@ -27,16 +27,16 @@ function Banner() {
         
           <div className="banner__info">
           <p>
-            Записывайтесь на автомойку и<br />
-            сэкономьте онлайн по выгодной<br />
-            подписке, и без звонков
+            Вставайте в очередь на автомойку<br />
+             онлайн по выгодной подписке, <br />
+            без лишних действий
           </p>
         </div>
         </div>
 
         <div className="banner__phones" style={{backgroundImage: `url(${backfone})`}}>
           <div className="banner__phone banner__phone--left">
-            <img src={phone} alt="Phone 1" />
+            <img src={phone} alt="Phone 1" className="banner__phone banner__phone--left"/>
           </div>
 
           <div className="banner__phone banner__phone--right">
@@ -47,7 +47,7 @@ function Banner() {
           </div>
    <div className="app-download__buttons">
               <a 
-                href="https://apps.apple.com" 
+                href="https://apps.apple.com/us/app/%D0%BC%D0%BE%D0%B9-%D0%BE-%D0%B1%D0%B0%D0%BD%D0%BA/id1257075492" 
                 className="app-download__btn app-download__btn--apple"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,7 +56,7 @@ function Banner() {
               </a>
               
               <a 
-                href="https://play.google.com" 
+                href="https://play.google.com/store/apps/details?id=kg.o.nurtelecom" 
                 className="app-download__btn app-download__btn--google"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -14,12 +14,12 @@ const AppDownload = () => {
           </h2>
           
           <p className="app-download__description">
-         Выберите мойку, подберите услуги и оплачивайте <br /> быстро и удобно без очередей
+           Выберите мойку,  подберите услуги <br /> и оплачивайте быстро и удобно
           </p>
           
           <div className="app-download__buttons">
             <a 
-              href="https://apps.apple.com" 
+              href="https://apps.apple.com/us/app/%D0%BC%D0%BE%D0%B9-%D0%BE-%D0%B1%D0%B0%D0%BD%D0%BA/id1257075492" 
               className="app-download__btn app-download__btn--apple"
               target="_blank"
               rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const AppDownload = () => {
             </a>
             
             <a 
-              href="https://play.google.com" 
+              href="https://play.google.com/store/apps/details?id=kg.o.nurtelecom" 
               className="app-download__btn app-download__btn--google"
               target="_blank"
               rel="noopener noreferrer"

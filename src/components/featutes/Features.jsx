@@ -1,6 +1,6 @@
 import React from 'react';
 import './Styles.scss';
-import phoneImg from '../../assets/image/1.png'
+import phoneImg from '../../assets/image/экран(список моек).png';
 import icon1 from '../../assets/svg/Frame (35).svg'
 import icon2 from '../../assets/svg/Frame (36).svg'
 import icon3 from '../../assets/svg/Frame (37).svg'
@@ -9,8 +9,8 @@ const Benefits = () => {
   const cards = [
     {
       icon: icon1,
-      title: 'Очередей и ожидания больше не будет',
-      desc: 'Вы записываетесь заранее и приезжаете точно в своё время'
+      title: 'Без лишнего ожидания на месте онлайн',
+      desc: 'В приложении вы видите загруженность мойки и  понимаете, через сколько вас примут'
     },
     {
       icon: icon2,
@@ -19,8 +19,8 @@ const Benefits = () => {
     },
     {
       icon: icon3,
-      title: 'Свободные слоты всегда видны всем',
-      desc: 'Вы выбираете удобное время и сразу бронируете его'
+      title: 'Прозрачная очередь для всех',
+      desc: 'Очередь и время ожидания обновляются в реальном  времени без скрытых приоритетов'
     },
     {
       icon: icon4,
@@ -33,9 +33,10 @@ const Benefits = () => {
     <section className="benefits" id='Vygoda'>
       <div className="benefits__container container">
         <div className="benefits__header">
-          <h2 className="benefits__title">С ONETOUCH таких проблем не будет</h2>
+          <h2 className="benefits__title">Всё прозрачно 
+и предсказуемо</h2>
           <p className="benefits__subtitle">
-            Всё быстро и удобно: записывайтесь, выбирайте услуги и оплачивайте онлайн в приложении — без очередей.
+            Вы видите загруженность автомоек, встаёте в онлайн-очередь  и приезжаете без лишнего ожидания.
           </p>
         </div>
 

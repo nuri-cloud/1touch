@@ -49,7 +49,40 @@ $badge-perple: #B26FFF;
     margin-bottom: 40px;
     line-height: 1.2;
   }
+  .tariffs-filter {
+    display: flex;
+    justify-content: start;
+    gap: 25px;
+    height: 57px;
+  .tariffs-filter__inner {
+  display: flex;
+  gap: 25px;
+  width: max-content; // ключевой момент
+}
+    button {
+      width: 180px;
+      height: 100%;
+      background: white;
+      border-radius: 30px;
+      font-size: 22px;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #C0D3DE;
+      color: white;
+      &:hover {
+        border-color: #3083FF;
+        color: #ffffff;
+      }
 
+      &.active {
+        background: #3083FF;
+        color: white;
+        border-color: #3083FF;
+      }
+    }
+  }
   .tariffs-carousel {
     position: relative;
     padding: 0px 0 0px;
@@ -230,7 +263,7 @@ margin-right: 0 !important;
     
     h1 {
       font-size: 42px;
-      margin-bottom: 5px;
+      margin-bottom: 25px;
     }
 
   }
@@ -242,7 +275,7 @@ margin-right: 0 !important;
     padding: 0 0px 0px 20px;
     h1 {
       font-size: 38px;
-      margin-bottom: 0px;
+      margin-bottom: 25px;
     }
 
     .tariffs-carousel {
@@ -256,10 +289,23 @@ margin-right: 0 !important;
   .ourtariffs {
     margin-top: 40px;
     max-width: 100%;
-
+  .tariffs-filter{
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+  }
+  .tariffs-filter__inner {
+  display: flex;
+  gap: 12px;
+  width: max-content; // ключевой момент
+}
+  .tariffs-filter::-webkit-scrollbar {
+    display: none; 
+  }
     h1 {
       font-size: 32px;
-      margin-bottom: 0px;
+      margin-bottom: 25px;
     }
 
     .tariffs-carousel {
@@ -319,7 +365,7 @@ margin-right: 0 !important;
     margin-top: 0px;
       padding: 0 0px 0px 15px;
     h1 {
-      margin-bottom: 0px;
+      margin-bottom: 25px;
     }
 
     // .tariffCard {

@@ -24,10 +24,10 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer__socials">
-              <a href="#" className="social-icon"><img src={WhatsApp} alt="" /></a>
-              <a href="#" className="social-icon"><img src={Telegram} alt="" /></a>
-              <a href="#" className="social-icon"><img src={Instagram} alt="" /></a>
-              <a href="#" className="social-icon"><img src={TikTok} alt="" /></a>
+              <a href="https://wa.me/996550200864" className="social-icon"><img src={WhatsApp} alt="" /></a>
+              <a href="https://t.me/onetouch" className="social-icon"><img src={Telegram} alt="" /></a>
+              <a href="https://instagram.com/onetouch" className="social-icon"><img src={Instagram} alt="" /></a>
+              <a href="https://www.tiktok.com/@onetouch" className="social-icon"><img src={TikTok} alt="" /></a>
             </div>
           </div>
 
@@ -38,7 +38,7 @@ const Footer = () => {
               </div>
               <div className="contact-item__text">
                 <label>Телефон</label>
-                <a href="tel:+996700126285">+996 (700) 126 285</a>
+                <a href="tel:+996550200864">+996 550 200 864</a>
               </div>
             </div>
             <div className="contact-item">
@@ -47,7 +47,7 @@ const Footer = () => {
               </div>
               <div className="contact-item__text">
                 <label>email почта</label>
-                <a href="mailto:onetouch@gmail.com">onetouch@gmail.com</a>
+                <a href="mailto:onettouch1@gmail.com">onettouch1@gmail.com</a>
               </div>
             </div>
           </div>
@@ -67,8 +67,8 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <div className="footer__apps">
-            <a href="#" className="app-link app-link--apple"><img src={appleLogo} alt="" /></a>
-            <a href="#" className="app-link app-link--google"><img src={googlePlayLogo} alt="" /></a>
+            <a  href="https://apps.apple.com/us/app/%D0%BC%D0%BE%D0%B9-%D0%BE-%D0%B1%D0%B0%D0%BD%D0%BA/id1257075492" target="_blank" className="app-link app-link--apple"><img src={appleLogo} alt="" /></a>
+            <a  href="https://play.google.com/store/apps/details?id=kg.o.nurtelecom" target="_blank" className="app-link app-link--google"><img src={googlePlayLogo} alt="" /></a>
           </div>
           <p className="footer__copyright">© 2025 1TOUCH</p>
         </div>
