@@ -14,13 +14,11 @@ function GetInLine({ isOpen, onClose }) {
   const scannerRef = useRef(null);
   const isProcessing = useRef(false);
 
-  // Проверка токена при открытии модалки
   useEffect(() => {
     if (isOpen) {
       const guestToken = localStorage.getItem('guestToken');
       if (guestToken) {
-        // Если токен есть, сразу переходим в очередь
-        onClose();
+          onClose();
         navigate('/queue');
       }
     }
@@ -109,7 +107,7 @@ function GetInLine({ isOpen, onClose }) {
           navigate('/queue');
         }, 6000);
       } else {
-        throw new Error(data.message || 'Ошибка сервера');
+        throw new Error(data.carwash_id || 'Мойка не найдена. Пожалуйста, попробуйте снова.');
       }
     } catch (err) {
       setError(err.message);
