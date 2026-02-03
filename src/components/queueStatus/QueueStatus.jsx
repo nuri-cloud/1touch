@@ -10,10 +10,66 @@ export const QueueStatus = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const fetchingRef = React.useRef(false);
+  const tokenTimerRef = React.useRef(null);
 
   useEffect(() => {
     fetchBookingData();
+    
+    return () => {
+      if (tokenTimerRef.current) {
+        clearTimeout(tokenTimerRef.current);
+      }
+    };
   }, []);
+
+  const deleteToken = () => {
+    localStorage.removeItem('guestToken');
+    localStorage.removeItem('tokenExpirationTime');
+    setError('Ваше время истекло. Токен был удален. Пожалуйста, встаньте в очередь заново.');
+    setBookingData(null);
+    
+    if (tokenTimerRef.current) {
+      clearTimeout(tokenTimerRef.current);
+    }
+  };
+
+  const startTokenTimer = () => {
+    if (tokenTimerRef.current) {
+      clearTimeout(tokenTimerRef.current);
+    }
+
+    const ONE_HOUR = 60 * 60 * 1000; // 1 час в миллисекундах
+    const expirationTime = Date.now() + ONE_HOUR;
+    
+    localStorage.setItem('tokenExpirationTime', expirationTime.toString());
+
+    tokenTimerRef.current = setTimeout(() => {
+      deleteToken();
+    }, ONE_HOUR);
+  };
+
+  const checkExistingTimer = () => {
+    const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
+    
+    if (savedExpirationTime) {
+      const expirationTime = parseInt(savedExpirationTime, 10);
+      const now = Date.now();
+      const remaining = expirationTime - now;
+
+      if (remaining <= 0) {
+        // Время уже истекло
+        deleteToken();
+        return false;
+      } else {
+        // Восстанавливаем таймер
+        tokenTimerRef.current = setTimeout(() => {
+          deleteToken();
+        }, remaining);
+        return true;
+      }
+    }
+    return false;
+  };
 
   const fetchBookingData = async () => {
     if (fetchingRef.current) return;
@@ -44,6 +100,11 @@ export const QueueStatus = () => {
       const data = await response.json();
       setBookingData(data);
       setError(null);
+
+      // Проверяем существующий таймер или создаем новый
+      if (!checkExistingTimer()) {
+        startTokenTimer();
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -98,11 +159,9 @@ export const QueueStatus = () => {
   const totalInQueue = currentBooking.total_people_in_queue || 0;
   const peopleAhead = position > 0 ? position - 1 : 0;
 
-  // Прямой прогресс: чем больше позиция, тем больше процент
   const progress = totalInQueue > 0 ? (position / totalInQueue) * 100 : 0;
   const waitTime = currentBooking.user_wait_time_minutes || (peopleAhead * 3);
 
-  // Безопасное получение статуса
   const userStatus = currentBooking.user_status || {};
   const statusLabel = userStatus.label || 'В ожидании';
   const statusColor = userStatus.color || '#FF6900';

@@ -26,9 +26,9 @@ $text-gray: #9EA3AC;
   }
 
   &__subtitle {
-    font-size: 18px;
+    font-size: 20px;
     color: $text-gray;
-    max-width: 550px;
+    max-width: 565px;
     line-height: 1.6;
   }
 
@@ -96,7 +96,8 @@ $text-gray: #9EA3AC;
   }
 
   &__title {
-    font-size: 22px;
+    font-size: 24px;
+    margin-right: 40px;
     font-weight: 600;
     color: $text-dark;
     line-height: 1.3;

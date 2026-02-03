@@ -127,11 +127,11 @@ function Ourtariffs() {
                 spaceBetween: 20
               },
               1024: {
-                slidesPerView: 3.3,
+                slidesPerView: 3,
                 spaceBetween: 24
               },
               1200: {
-                slidesPerView: 3.3,
+                slidesPerView: 3,
                 spaceBetween: 28
               }
             }}

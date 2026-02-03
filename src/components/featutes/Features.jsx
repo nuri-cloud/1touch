@@ -8,7 +8,7 @@ import icon4 from '../../assets/svg/Frame (38).svg'
 const Benefits = () => {
   const cards = [
     {
-      icon: icon1,
+      icon: icon3,
       title: 'Без лишнего ожидания на месте онлайн',
       desc: 'В приложении вы видите загруженность мойки и  понимаете, через сколько вас примут'
     },
@@ -18,7 +18,7 @@ const Benefits = () => {
       desc: 'Стоимость услуг фиксирована и понятна, без скрытых доплат'
     },
     {
-      icon: icon3,
+      icon: icon1,
       title: 'Прозрачная очередь для всех',
       desc: 'Очередь и время ожидания обновляются в реальном  времени без скрытых приоритетов'
     },
@@ -45,7 +45,6 @@ const Benefits = () => {
             {cards.map((card, index) => (
               <div className="benefit-card" key={index}>
                 <div className="benefit-card__icon">
-                  {/* Здесь можно вставить <img src={...} /> */}
                   <span><img src={card.icon} alt="" /></span>
                 </div>
                 <h3 className="benefit-card__title">{card.title}</h3>
