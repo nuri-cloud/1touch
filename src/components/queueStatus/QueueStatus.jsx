@@ -11,13 +11,28 @@ export const QueueStatus = () => {
   const [error, setError] = useState(null);
   const fetchingRef = React.useRef(false);
   const tokenTimerRef = React.useRef(null);
+  const checkIntervalRef = React.useRef(null);
 
   useEffect(() => {
     fetchBookingData();
     
+    // Периодическая проверка истечения токена каждую минуту
+    checkIntervalRef.current = setInterval(() => {
+      const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
+      if (savedExpirationTime) {
+        const expirationTime = parseInt(savedExpirationTime, 10);
+        if (Date.now() >= expirationTime) {
+          deleteToken();
+        }
+      }
+    }, 60000); // Проверка каждую минуту
+    
     return () => {
       if (tokenTimerRef.current) {
         clearTimeout(tokenTimerRef.current);
+      }
+      if (checkIntervalRef.current) {
+        clearInterval(checkIntervalRef.current);
       }
     };
   }, []);
@@ -30,6 +45,9 @@ export const QueueStatus = () => {
     
     if (tokenTimerRef.current) {
       clearTimeout(tokenTimerRef.current);
+    }
+    if (checkIntervalRef.current) {
+      clearInterval(checkIntervalRef.current);
     }
   };
 
@@ -82,6 +100,16 @@ export const QueueStatus = () => {
 
       if (!guestToken) {
         throw new Error('Токен доступа не найден. Пожалуйста, встаньте в очередь заново.');
+      }
+
+      // Проверка истечения токена перед каждым запросом
+      const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
+      if (savedExpirationTime) {
+        const expirationTime = parseInt(savedExpirationTime, 10);
+        if (Date.now() >= expirationTime) {
+          deleteToken();
+          return; // Прерываем выполнение
+        }
       }
 
       const response = await fetch('/api/payment/guest-bookings/me/', {
