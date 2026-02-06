@@ -12,31 +12,8 @@ export const QueueStatus = () => {
   const fetchingRef = React.useRef(false);
   const tokenTimerRef = React.useRef(null);
   const checkIntervalRef = React.useRef(null);
-
-  useEffect(() => {
-    fetchBookingData();
-    
-    // Периодическая проверка истечения токена каждую минуту
-    checkIntervalRef.current = setInterval(() => {
-      const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
-      if (savedExpirationTime) {
-        const expirationTime = parseInt(savedExpirationTime, 10);
-        if (Date.now() >= expirationTime) {
-          deleteToken();
-        }
-      }
-    }, 60000); // Проверка каждую минуту
-    
-    return () => {
-      if (tokenTimerRef.current) {
-        clearTimeout(tokenTimerRef.current);
-      }
-      if (checkIntervalRef.current) {
-        clearInterval(checkIntervalRef.current);
-      }
-    };
-  }, []);
-
+  const pollIntervalRef = React.useRef(null); // НОВОЕ
+  
   const deleteToken = () => {
     localStorage.removeItem('guestToken');
     localStorage.removeItem('tokenExpirationTime');
@@ -49,6 +26,9 @@ export const QueueStatus = () => {
     if (checkIntervalRef.current) {
       clearInterval(checkIntervalRef.current);
     }
+    if (pollIntervalRef.current) {
+      clearInterval(pollIntervalRef.current);
+    }
   };
 
   const startTokenTimer = () => {
@@ -56,7 +36,7 @@ export const QueueStatus = () => {
       clearTimeout(tokenTimerRef.current);
     }
 
-    const ONE_HOUR = 60 * 60 * 1000; // 1 час в миллисекундах
+    const ONE_HOUR = 60 * 60 * 1000; 
     const expirationTime = Date.now() + ONE_HOUR;
     
     localStorage.setItem('tokenExpirationTime', expirationTime.toString());
@@ -75,11 +55,9 @@ export const QueueStatus = () => {
       const remaining = expirationTime - now;
 
       if (remaining <= 0) {
-        // Время уже истекло
         deleteToken();
         return false;
       } else {
-        // Восстанавливаем таймер
         tokenTimerRef.current = setTimeout(() => {
           deleteToken();
         }, remaining);
@@ -89,12 +67,17 @@ export const QueueStatus = () => {
     return false;
   };
 
-  const fetchBookingData = async () => {
+  // ИЗМЕНЕНО: добавлен параметр silent
+  const fetchBookingData = async (silent = false) => {
     if (fetchingRef.current) return;
      
     try {
       fetchingRef.current = true;
-      setLoading(true);
+      
+      // Loader только при первой загрузке
+      if (!silent) {
+        setLoading(true);
+      }
       
       const guestToken = localStorage.getItem('guestToken');
 
@@ -102,13 +85,12 @@ export const QueueStatus = () => {
         throw new Error('Токен доступа не найден. Пожалуйста, встаньте в очередь заново.');
       }
 
-      // Проверка истечения токена перед каждым запросом
       const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
       if (savedExpirationTime) {
         const expirationTime = parseInt(savedExpirationTime, 10);
         if (Date.now() >= expirationTime) {
           deleteToken();
-          return; // Прерываем выполнение
+          return;
         }
       }
 
@@ -129,19 +111,50 @@ export const QueueStatus = () => {
       setBookingData(data);
       setError(null);
 
-      // Проверяем существующий таймер или создаем новый
       if (!checkExistingTimer()) {
         startTokenTimer();
       }
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      if (!silent) {
+        setLoading(false);
+      }
       setTimeout(() => {
         fetchingRef.current = false;
-      }, 1000);
+      }, 500); // уменьшил с 1000 до 500
     }
   };
+
+  useEffect(() => {
+    fetchBookingData(false);
+    
+    pollIntervalRef.current = setInterval(() => {
+      fetchBookingData(true); // true = без loader
+    }, 2000);
+    
+    checkIntervalRef.current = setInterval(() => {
+      const savedExpirationTime = localStorage.getItem('tokenExpirationTime');
+      if (savedExpirationTime) {
+        const expirationTime = parseInt(savedExpirationTime, 10);
+        if (Date.now() >= expirationTime) {
+          deleteToken();
+        }
+      }
+    }, 60000); 
+    
+    return () => {
+      if (pollIntervalRef.current) {
+        clearInterval(pollIntervalRef.current);
+      }
+      if (tokenTimerRef.current) {
+        clearTimeout(tokenTimerRef.current);
+      }
+      if (checkIntervalRef.current) {
+        clearInterval(checkIntervalRef.current);
+      }
+    };
+  }, []);
 
   if (loading) {
     return (
@@ -162,7 +175,7 @@ export const QueueStatus = () => {
           </div>
           <h2>Что-то пошло не так</h2>
           <p className="error-message">{error}</p>
-          <button onClick={fetchBookingData} className="retry-button">
+          <button onClick={() => fetchBookingData(false)} className="retry-button">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M17.5 10C17.5 14.1421 14.1421 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C12.0711 2.5 13.9461 3.37857 15.2678 4.79289" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               <path d="M17.5 2.5V7.5H12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -187,21 +200,21 @@ export const QueueStatus = () => {
   const totalInQueue = currentBooking.total_people_in_queue || 0;
   const peopleAhead = position > 0 ? position - 1 : 0;
 
-  const progress = totalInQueue > 0 ? (position / totalInQueue) * 100 : 0;
+const progress = totalInQueue > 0 ? ((totalInQueue - position) / totalInQueue) * 100 : 0;
   const waitTime = currentBooking.user_wait_time_minutes || (peopleAhead * 3);
 
   const userStatus = currentBooking.user_status || {};
   const statusLabel = userStatus.label || 'В ожидании';
   const statusColor = userStatus.color || '#FF6900';
-
+  const usercolor = "#010101"
+  
   return (
     <div className="queue-container">
       <div className="status-card">
         <section>
           <header className="status-card__header">
             <div className="profile">
-              <div className="avatar">
-                <img src={currentBooking.image_url} alt="" />
+              <div className="avatar" style={{ backgroundImage: `url(${currentBooking.image_url})` }}>
               </div>
               <div className="info">
                 <h3>{currentBooking.carwash_name || 'Rash'}</h3>
@@ -209,7 +222,6 @@ export const QueueStatus = () => {
               </div>
             </div>
           </header>
-
           <div className="status-card__controls">
             <div className="time-badge">
               <img src={image2} alt="" />
@@ -252,7 +264,6 @@ export const QueueStatus = () => {
         <h4>Список ваших очередей</h4>
         {(currentBooking.queue || []).map((booking, index) => {
           const isCurrentUser = currentBooking.user_position === booking.position;
-          
           return (
             <div 
               key={booking.id || index} 
@@ -263,18 +274,18 @@ export const QueueStatus = () => {
                   <img src={image} alt="" />
                 </div>
                 <div className="details">
-                  <p className="status-text">
-                     {isCurrentUser
-  ? 'Вы в очереди'
-    : booking.position < 10
-      ? `0${booking.position} в очереди`
-      : `${booking.position} в очереди`
-}
+                  <p className="status-text" style={{ color: isCurrentUser ? usercolor : '#3b82f6' }}>
+                    {isCurrentUser
+                      ? 'Вы в очереди'
+                      : booking.position < 10
+                        ? `0${booking.position} в очереди`
+                        : `${booking.position} в очереди`
+                    }
                   </p>
                   <p className="sub-text">
-                 {booking.car_brand || booking.car_model
-  ? `${booking.car_brand ?? ''} ${booking.car_model ?? ''}`.trim()
-  : 'Отсутствует'}
+                    {booking.car_brand || booking.car_model
+                      ? `${booking.car_brand ?? ''} ${booking.car_model ?? ''}`.trim()
+                      : 'Отсутствует'}
                   </p>
                 </div>
               </div>
@@ -283,7 +294,7 @@ export const QueueStatus = () => {
                   {booking.joined_at || new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                 </p>
                 <p className="plate">
-                  {booking.car_number || 'Нет номера'}
+                  {booking.car_gos_number || 'Нет номера'}
                 </p>
               </div>
             </div>

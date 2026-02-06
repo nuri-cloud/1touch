@@ -91,7 +91,7 @@ function GetInLine({ isOpen, onClose }) {
       const response = await fetch('/api/payment/guest-bookings/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ carwash_id: parseInt(id) }),
+        body: JSON.stringify({ carwash_id: parseInt(1) }),
       });
 
       const data = await response.json();
