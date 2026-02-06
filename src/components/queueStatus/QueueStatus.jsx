@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import image from '../../assets/svg/image 25.svg';
-import image2 from '../../assets/svg/Frame 2147225011.svg';
-import image3 from '../../assets/svg/Frame 2147225011 (1).svg';
-import image4 from '../../assets/svg/Frame (40).svg';
+import image2 from '../../assets/svg/Time Circle.svg';
+import image3 from '../../assets/svg/Frame (42).svg';
+import image4 from '../../assets/svg/Frame (43).svg';
 import { GoDotFill } from "react-icons/go"; 
 import './QueueStatus.scss';
 

@@ -2,6 +2,14 @@
 body {
   font-family: "Mulish", sans-serif;
 }
+$dark-bg: #0f172a;          
+$dark-card: #111827;       
+$dark-surface: #1f2933;     
+$dark-text: #e5e7eb;        
+$dark-text-muted: #9ca3af;  
+$dark-border: #273244;      
+$dark-blue: #3b82f6;
+
 .container{
   max-width: 1248px;
   width: 100%;
@@ -185,6 +193,115 @@ background-clip: text;
         }
       }
     }
+  }
+   .queue-container {
+    section {
+      background: $dark-card;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  .status-cars {
+    background: $dark-card;
+    box-shadow: none;
+  }
+
+  .status-card {
+    &__header,
+    &__controls .time-badge,
+    &__controls .call-button {
+      background-color: $dark-surface;
+       img{
+        padding: 8px;
+        background-color:#080c12;
+        border-radius: 50%;
+      }
+    }
+  
+    h3, h4 {
+      color: $dark-text;
+    }
+
+    p {
+      color: $dark-text-muted;
+    }
+
+    &__position {
+      .waiting-status {
+        color: #f59e0b;
+      }
+
+      .current {
+        color: $dark-text;
+      }
+
+      .total {
+        color: $dark-text-muted;
+      }
+
+      .progress-bar {
+        background: #1e293b;
+
+        .progress-fill {
+          background: $dark-blue;
+        }
+      }
+    }
+  }
+
+  .wait-time {
+    background-color: $dark-surface;
+     img{
+    padding: 9px;
+    background-color: #080c12;
+    border-radius: 50%;
+  }
+    h4 {
+      color: $dark-text-muted;
+    }
+
+    strong {
+      color: $dark-text;
+    }
+  }
+
+  .queue-list {
+    h4 {
+      color: $dark-text;
+    }
+
+    .queue-item {
+      &.active {
+        background-color: $dark-surface;
+      }
+
+      .status-text {
+        color: $dark-text !important;
+      }
+
+      .sub-text,
+      .plate {
+        color: $dark-text-muted;
+      }
+
+      .time {
+        color: $dark-text;
+      }
+    }
+  }
+
+  .error-state {
+    h2 {
+      color: $dark-text;
+    }
+
+    .error-message {
+      color: $dark-text-muted;
+    }
+  }
+
+  .loader {
+    background: $dark-blue;
   }
 }
 html {
