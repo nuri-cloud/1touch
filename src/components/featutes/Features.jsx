@@ -9,22 +9,22 @@ const Benefits = () => {
   const cards = [
     {
       icon: icon3,
-      title: 'Без лишнего ожидания на месте онлайн',
+      title: ['Без лишнего ожидания', 'на месте онлайн'],
       desc: 'В приложении вы видите загруженность мойки и  понимаете, через сколько вас примут'
     },
     {
       icon: icon2,
-      title: 'Цена всегда известна и прозрачна',
+      title: ['Цена всегда известна', 'и прозрачна'],
       desc: 'Стоимость услуг фиксирована и понятна, без скрытых доплат'
     },
     {
       icon: icon1,
-      title: 'Прозрачная очередь для всех',
+      title: ['Прозрачная очередь', 'для всех'],
       desc: 'Очередь и время ожидания обновляются в реальном  времени без скрытых приоритетов'
     },
     {
       icon: icon4,
-      title: 'Звонков и ручной записи не будет больше',
+      title: ['Звонков и ручной записи', 'не будет больше'],
       desc: 'Вся запись и оплата происходят онлайн за пару кликов'
     }
   ];
@@ -47,7 +47,13 @@ const Benefits = () => {
                 <div className="benefit-card__icon">
                   <span><img src={card.icon} alt="" /></span>
                 </div>
-                <h3 className="benefit-card__title">{card.title}</h3>
+               <h3 className="benefit-card__title">
+  {Array.isArray(card.title)
+    ? card.title.map((line, i) => (
+        <span key={i}>{line}<br /></span>
+      ))
+    : card.title}
+</h3>
                 <p className="benefit-card__desc">{card.desc}</p>
               </div>
             ))}

@@ -28,7 +28,7 @@ function Problem() {
       </div>
       <div className='problems__card'>
         <img src={problem3} alt="" />
-        <h1>Непрозрачные цены на услуги мойки</h1>
+        <h1>Непрозрачные цены <br /> на услуги мойки</h1>
         <p>Итоговая стоимость становится известна только на месте</p>
         <img className='cardsImg' src={img3} alt="" />
       </div>

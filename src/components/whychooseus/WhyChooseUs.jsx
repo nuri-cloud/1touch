@@ -27,7 +27,7 @@ function WhyChooseUs() {
     {
       id: 2,
       number: img1,
-      title: 'Контроль качества каждой мойки',
+      title: ['Контроль качества', 'каждой мойки'],
       description: 'Каждая услуга выполняется по стандарту, вы видите детали и стоимость заранее'
     },
     {
@@ -39,7 +39,7 @@ function WhyChooseUs() {
     {
       id: 4,
       number: img3,
-      title: 'Все услуги и опции под рукой',
+      title: ['Все услуги и опции', 'под рукой'],
       description: 'В приложении сразу видны все доступные опции, и легко подобрать нужные услуги'
     }
   ];
@@ -52,7 +52,16 @@ function WhyChooseUs() {
         <div className="reasons-grid">
           {reasons.map((reason) => (
             <div key={reason.id} className="reason-card">
-              <h3 className="reason-card__title">{reason.title}</h3>
+              <h3 className="reason-card__title">
+  {Array.isArray(reason.title)
+    ? reason.title.map((line, index) => (
+        <span key={index}>
+          {line}
+          <br />
+        </span>
+      ))
+    : reason.title}
+</h3>
               <div className='reason-description'>
                 {isMobile ? (
                   <>
@@ -68,7 +77,7 @@ function WhyChooseUs() {
                   ) : (
                     <>
                       <p className="reason-card__description1">{reason.description}</p>
-                    <img src={reason.number} alt="" />
+                    <img src={reason.number} alt="" className='reason-img3' />
                     </>
                   )
                 )}
