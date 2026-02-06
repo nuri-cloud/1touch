@@ -3,6 +3,7 @@ import image from '../../assets/svg/image 25.svg';
 import image2 from '../../assets/svg/Frame 2147225011.svg';
 import image3 from '../../assets/svg/Frame 2147225011 (1).svg';
 import image4 from '../../assets/svg/Frame (40).svg';
+import { GoDotFill } from "react-icons/go"; 
 import './QueueStatus.scss';
 
 export const QueueStatus = () => {
@@ -236,10 +237,11 @@ const progress = totalInQueue > 0 ? ((totalInQueue - position) / totalInQueue) *
 
         <section className="status-card__position">
           <div className="label-row">
-            <span>Ваша позиция</span>
-            <span className="waiting-status" style={{color: statusColor}}>
-              {statusLabel}
-            </span>
+            <h4>Ваша позиция</h4>
+            <div className="waiting-status" style={{color: statusColor}}>
+             <GoDotFill />
+             {statusLabel}
+            </div>
           </div>
           <div className="number-display">
             <span className="current">{position}</span>
