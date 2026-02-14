@@ -89,6 +89,7 @@ color:rgba(35, 38, 43, 1);
   button {
     font-family: "Mulish", sans-serif;
     cursor: pointer;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     background-color: $bg-light;
