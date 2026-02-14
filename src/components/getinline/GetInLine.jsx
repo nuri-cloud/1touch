@@ -9,8 +9,10 @@ function GetInLine({ isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showScanner, setShowScanner] = useState(false);
+  const [carNum, setCarNum] = useState("")
   const [showSuccess, setShowSuccess] = useState(false);
-  
+  const [step, setStep] = useState(1)
+
   const scannerRef = useRef(null);
   const isProcessing = useRef(false);
 
@@ -18,7 +20,7 @@ function GetInLine({ isOpen, onClose }) {
     if (isOpen) {
       const guestToken = localStorage.getItem('guestToken');
       if (guestToken) {
-          onClose();
+        onClose();
         navigate('/queue');
       }
     }
@@ -29,8 +31,8 @@ function GetInLine({ isOpen, onClose }) {
     if (scannerRef.current && scannerRef.current.isScanning) {
       try {
         await scannerRef.current.stop();
-        const reader = document.getElementById('reader'); 
-        if (reader) reader.innerHTML = ''; 
+        const reader = document.getElementById('reader');
+        if (reader) reader.innerHTML = '';
       } catch (err) {
         console.error("Ошибка при остановке камеры:", err);
       }
@@ -45,7 +47,7 @@ function GetInLine({ isOpen, onClose }) {
 
         try {
           await html5QrCode.start(
-            { facingMode: "environment" }, 
+            { facingMode: "environment" },
             { fps: 10, qrbox: { width: 250, height: 250 } },
             onScanSuccess
           );
@@ -73,35 +75,41 @@ function GetInLine({ isOpen, onClose }) {
     isProcessing.current = true;
 
     await stopScanner();
-    
+
     let carwashId = decodedText;
     try {
       const url = new URL(decodedText);
       carwashId = url.searchParams.get("carwash_id") || decodedText;
-    } catch (e) {}
+    } catch (e) { }
 
     handleJoinQueue(carwashId);
   }
 
   const handleJoinQueue = async (id) => {
+
+    if (!carNum.trim()) {
+      setError("Введите гос. номер машины");
+      return;
+    }
+
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch('/api/payment/guest-bookings/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ carwash_id: parseInt(id) }),
+        body: JSON.stringify({ carwash_id: parseInt(id), gos_number: carNum }),
       });
 
       const data = await response.json();
-      
+
       if (response.ok) {
         const token = data.token || data.guest_token;
         localStorage.setItem('guestToken', token);
-        
+
         setShowSuccess(true);
-        
+
         setTimeout(() => {
           onClose();
           navigate('/queue');
@@ -117,6 +125,21 @@ function GetInLine({ isOpen, onClose }) {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!carNum.trim()) {
+      setError("Введите номер машины");
+      return;
+    }
+
+    setError(null);
+    setShowScanner(true);
+    setStep(2);
+  };
+
+
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="get-in-line-modal">
       <div className="get-in-line-content">
@@ -124,9 +147,9 @@ function GetInLine({ isOpen, onClose }) {
           <div className="success-message">
             <div className="success-icon">
               <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                <circle cx="40" cy="40" r="38" fill="#4CAF50" fillOpacity="0.1"/>
-                <circle cx="40" cy="40" r="30" stroke="#4CAF50" strokeWidth="3"/>
-                <path d="M28 40L36 48L52 32" stroke="#4CAF50" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="40" cy="40" r="38" fill="#4CAF50" fillOpacity="0.1" />
+                <circle cx="40" cy="40" r="30" stroke="#4CAF50" strokeWidth="3" />
+                <path d="M28 40L36 48L52 32" stroke="#4CAF50" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <h1>Поздравляем! 🎉</h1>
@@ -138,33 +161,36 @@ function GetInLine({ isOpen, onClose }) {
           </div>
         ) : !showScanner ? (
           <>
-            <h1>Встать в очередь на мойку?</h1>
-            <p>Вы собираетесь встать в очередь. Хотите продолжить?</p>
-            <div className="get-in-line-buttons">
-              <button className="btn-primary" onClick={() => setShowScanner(true)}>
+            <h1>Чтобы встать в очередь, введите гос. номер вашей машины</h1>
+            <form className="get-in-line-buttons">
+              <div className="input-group">
+                <label htmlFor="">Номер машины</label>
+                <div className='input-wrapper'><input type="text" placeholder='00 000 KGZ' onChange={(e) => setCarNum(e.target.value)} required /></div>
+              </div>
+              <button className="btn-primary" type='button' onClick={handleClick}>
                 Встать в очередь
               </button>
               <button className="btn-secondary" onClick={onClose}>
                 Отмена
               </button>
-            </div>
+            </form>
           </>
-        ) : (
+        ) : (step === 2 &&
           <>
             <h1>Сканирование QR</h1>
             <p>Наведите камеру на QR-код автомойки</p>
-            
+
             <div id="reader" className="qr-reader-container"></div>
 
             <div className="get-in-line-buttons">
-              <button className="btn-secondary" onClick={handleBack} style={{marginTop: '20px'}}>
+              <button className="btn-secondary" onClick={handleBack} style={{ marginTop: '20px' }}>
                 Назад
               </button>
             </div>
           </>
         )}
-        {loading && <p style={{marginTop: '10px', color: '#3083FF'}}>Запись в очередь...</p>}
-        {error && <p style={{marginTop: '10px', color: 'red'}}>❌ {error}</p>}
+        {loading && <p style={{ marginTop: '10px', color: '#3083FF' }}>Запись в очередь...</p>}
+        {error && <p style={{ marginTop: '10px', color: 'red' }}>❌ {error}</p>}
       </div>
     </Modal>
   );

@@ -5,11 +5,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import icon from '../../assets/svg/icon.svg';
 import { MdOutlineLightMode } from "react-icons/md";
 import GetInLine from '../getinline/GetInLine';
-import MobileOnlyModal from '../cancel/Cancel'; 
+import MobileOnlyModal from '../cancel/Cancel';
 import { useNavigate } from 'react-router-dom';
+import i18n from '../../i18next/i18n'
+import { useTranslation } from 'react-i18next';
 
 function Header() {
-  const [lang, setLang] = useState('RU');
+  const { t } = useTranslation()
+  const [lang, setLang] = useState(i18n.langauga || "ru");
   const [openLang, setOpenLang] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -21,17 +24,17 @@ function Header() {
 
   const navigate = useNavigate();
 
-const handleNavClick = (sectionId) => {
-  closeMenu();
-  
-  // Если мы не на главной странице
-  if (window.location.pathname !== '/') {
-    navigate('/', { state: { scrollTo: sectionId } });
-  } else {
-    // Если уже на главной, просто скроллим
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+  const handleNavClick = (sectionId) => {
+    closeMenu();
+
+    // Если мы не на главной странице
+    if (window.location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      // Если уже на главной, просто скроллим
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
 
   useEffect(() => {
@@ -52,15 +55,23 @@ const handleNavClick = (sectionId) => {
     e.preventDefault();
 
     if (isLaptop()) {
-      setOpenQrModal(true);   
+      setOpenQrModal(true);
       setOpenGetInLine(false);
     } else {
-      setOpenGetInLine(true);   
+      setOpenGetInLine(true);
       setOpenQrModal(false);
     }
 
     closeMenu();
   };
+
+  const handleLangChange = (lang) => {
+    setLang(lang)
+    i18n.changeLanguage(lang)
+    localStorage.setItem("language", lang)
+    setOpenLang(false)
+    window.location.reload()
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,20 +103,20 @@ const handleNavClick = (sectionId) => {
   return (
     <header className={headerClasses}>
       <div className="header__container container">
-        
-        <div className="header__logo" onClick={() => navigate('/')} style={{cursor: 'pointer'}}>
+
+        <div className="header__logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
           <img src={logo} alt="OneTouch logo" />
           <h2>ONETOUCH</h2>
         </div>
 
         <nav className={`header__nav ${openMenu ? 'header__nav--open' : ''}`}>
-          <a href="#AboutUs" onClick={() => handleNavClick('AboutUs')}>О приложении</a>
-          <a href="#tariffs" onClick={() => handleNavClick('tariffs')}>Тарифы</a>
-          <a href="#Vygoda" onClick={() => handleNavClick('Vygoda')}>Выгода</a>
-          <a href="#downlend" onClick={() => handleNavClick('downlend')}>Скачать</a>
-          
-          <a href="#" onClick={handleOpenModal} className="nav-btn-highlight">Встать в очередь</a>
-          
+          <a href="#AboutUs" onClick={() => handleNavClick('AboutUs')}>{t("header.navs.0")}</a>
+          <a href="#tariffs" onClick={() => handleNavClick('tariffs')}>{t("header.navs.1")}</a>
+          <a href="#Vygoda" onClick={() => handleNavClick('Vygoda')}>{t("header.navs.2")}</a>
+          <a href="#downlend" onClick={() => handleNavClick('downlend')}>{t("header.navs.3")}</a>
+
+          <a href="#" onClick={handleOpenModal} className="nav-btn-highlight">{t("header.navs.4")}</a>
+
           <div className="header__nav-mobile">
             <div className="lang-switch">
               <button onClick={() => setOpenLang(!openLang)}>
@@ -113,8 +124,8 @@ const handleNavClick = (sectionId) => {
               </button>
               {openLang && (
                 <ul>
-                  <li onClick={() => { setLang('RU'); setOpenLang(false); }}>Русский</li>
-                  <li onClick={() => { setLang('KG'); setOpenLang(false); }}>Кыргызча</li>
+                  <li onClick={() => handleLangChange("ru")}>Русский</li>
+                  <li onClick={() => handleLangChange("kg")}>Кыргызча</li>
                 </ul>
               )}
             </div>
@@ -129,15 +140,15 @@ const handleNavClick = (sectionId) => {
             </button>
             {openLang && (
               <ul>
-                <li onClick={() => { setLang('RU'); setOpenLang(false); }}>Русский</li>
-                <li onClick={() => { setLang('KG'); setOpenLang(false); }}>Кыргызча</li>
+                <li onClick={() => handleLangChange("ru")}>Русский</li>
+                <li onClick={() => handleLangChange("kg")}>Кыргызча</li>
               </ul>
             )}
           </div>
           <span onClick={toggleTheme} className="theme-icon"><MdOutlineLightMode /></span>
         </div>
 
-        <button 
+        <button
           className={`header__burger ${openMenu ? 'header__burger--active' : ''}`}
           onClick={toggleMenu}
         >

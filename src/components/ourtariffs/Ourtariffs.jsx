@@ -4,15 +4,17 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './ourtariffs.scss';
+import { useTranslation } from 'react-i18next';
 
 function Ourtariffs() {
+  const {t} = useTranslation()
   const [selectedCarType, setSelectedCarType] = useState('sedan');
 
 
   const carTypes = [
-    { id: 'sedan', label: 'Седан' },
-    { id: 'crossover', label: 'Кроссовер' },
-    { id: 'suv', label: 'SUV' }
+    { id: 'sedan', label: 'homepage.tariffs.navs.0' },
+    { id: 'crossover', label: 'homepage.tariffs.navs.1' },
+    { id: 'suv', label: 'homepage.tariffs.navs.2'}
   ];
 
   const data = [
@@ -79,7 +81,7 @@ function Ourtariffs() {
 
   return (
     <div className='ourtariffs' id='tariffs'>
-      <h1>Наши тарифы</h1>
+      <h1>{t("homepage.tariffs.head-title")}</h1>
       
       <div className="tariffs-filter">
         <div className='tariffs-filter__inner'>
@@ -89,7 +91,7 @@ function Ourtariffs() {
             className={selectedCarType === type.id ? 'active' : ''}
             onClick={() => handleCarTypeChange(type.id)}
           >
-            {type.label}
+            {t(type.label)}
           </button>
         ))}
       </div>

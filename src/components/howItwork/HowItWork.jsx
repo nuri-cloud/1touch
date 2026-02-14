@@ -4,31 +4,34 @@ import step from '../../assets/image/1 шаг (1).png';
 import step1 from '../../assets/image/2 шаг (1).png';
 import step2 from '../../assets/image/3 шаг (2).png';
 import step3 from '../../assets/image/4 шаг (1).png';
+import { useTranslation } from 'react-i18next';
 
 function HowItWorks() {
+  const { t } = useTranslation()
+
   const steps = [
     {
       id: 1,
-      step: '1 шаг',
-      title: 'Выбираете себе удобный тариф',
+      step: "homepage.how-it-works.cards.0.step",
+      title: "homepage.how-it-works.cards.0.desc",
       image: step
     },
     {
       id: 2,
-      step: '2 шаг',
-      title: 'Оплачеваете по OR-коду',
+      step: "homepage.how-it-works.cards.1.step",
+      title: "homepage.how-it-works.cards.1.desc",
       image: step1
     },
     {
       id: 3,
-      step: '3 шаг',
-      title: 'Выбираете мойку',
+      step: "homepage.how-it-works.cards.2.step",
+      title: "homepage.how-it-works.cards.2.desc",
       image: step2
     },
     {
       id: 4,
-      step: '4 шаг',
-      title: 'Занимайте очередь на мойку',
+      step: "homepage.how-it-works.cards.3.step",
+      title: "homepage.how-it-works.cards.3.desc",
       image: step3
     }
   ];
@@ -36,8 +39,8 @@ function HowItWorks() {
   return (
     <div className="how-it-works" id='AboutUs'>
       <div className="how-it-works__container container">
-        <h2 className="how-it-works__title">Как работает наше приложение?</h2>
-        
+        <h2 className="how-it-works__title">{t("homepage.how-it-works.head-title")}</h2>
+
         <div className="steps-grid">
           {steps.map((step) => (
             <div key={step.id} className="step-card">
@@ -59,10 +62,10 @@ function HowItWorks() {
                   </div>
                 )}
               </div>
-              
+
               <div className="step-card__info">
-                <span className="step-card__number">{step.step}</span>
-                <h3 className="step-card__title">{step.title}</h3>
+                <span className="step-card__number">{t(step.step)}</span>
+                <h3 className="step-card__title">{t(step.title)}</h3>
               </div>
             </div>
           ))}

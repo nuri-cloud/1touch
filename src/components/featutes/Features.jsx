@@ -5,27 +5,32 @@ import icon1 from '../../assets/svg/Frame (35).svg'
 import icon2 from '../../assets/svg/Frame (36).svg'
 import icon3 from '../../assets/svg/Frame (37).svg'
 import icon4 from '../../assets/svg/Frame (38).svg'
+import { useTranslation } from 'react-i18next';
+
+
 const Benefits = () => {
+  const {t} = useTranslation()
+
   const cards = [
     {
       icon: icon3,
-      title: ['Без лишнего ожидания', 'на месте онлайн'],
-      desc: 'В приложении вы видите загруженность мойки и  понимаете, через сколько вас примут'
+      title: t("homepage.about.cards.0.heading"),
+      desc: t("homepage.about.cards.0.desc")
     },
     {
       icon: icon2,
-      title: ['Цена всегда известна', 'и прозрачна'],
-      desc: 'Стоимость услуг фиксирована и понятна, без скрытых доплат'
+      title: t("homepage.about.cards.1.heading"),
+      desc: t("homepage.about.cards.1.desc")
     },
     {
       icon: icon1,
-      title: ['Прозрачная очередь', 'для всех'],
-      desc: 'Очередь и время ожидания обновляются в реальном  времени без скрытых приоритетов'
+      title: t("homepage.about.cards.2.heading"),
+      desc: t("homepage.about.cards.2.desc")
     },
     {
       icon: icon4,
-      title: ['Звонков и ручной записи', 'не будет больше'],
-      desc: 'Вся запись и оплата происходят онлайн за пару кликов'
+      title: t("homepage.about.cards.3.heading"),
+      desc: t("homepage.about.cards.3.desc")
     }
   ];
 
@@ -33,10 +38,9 @@ const Benefits = () => {
     <section className="benefits" id='Vygoda'>
       <div className="benefits__container container">
         <div className="benefits__header">
-          <h2 className="benefits__title">Всё прозрачно 
-и предсказуемо</h2>
+          <h2 className="benefits__title">{t("homepage.about.title")}</h2>
           <p className="benefits__subtitle">
-            Вы видите загруженность автомоек, встаёте в онлайн-очередь  и приезжаете без лишнего ожидания.
+          {t("homepage.about.desc")}
           </p>
         </div>
 
@@ -47,13 +51,13 @@ const Benefits = () => {
                 <div className="benefit-card__icon">
                   <span><img src={card.icon} alt="" /></span>
                 </div>
-               <h3 className="benefit-card__title">
-  {Array.isArray(card.title)
-    ? card.title.map((line, i) => (
-        <span key={i}>{line}<br /></span>
-      ))
-    : card.title}
-</h3>
+                <h3 className="benefit-card__title">
+                  {Array.isArray(card.title)
+                    ? card.title.map((line, i) => (
+                      <span key={i}>{line}<br /></span>
+                    ))
+                    : card.title}
+                </h3>
                 <p className="benefit-card__desc">{card.desc}</p>
               </div>
             ))}
